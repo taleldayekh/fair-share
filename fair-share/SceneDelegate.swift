@@ -1,3 +1,13 @@
+// Specifies the initial view of the app when it launches, code for launching one window in my app (does not do much on iPhone but on iPad it is important because user can have muliple windows open at the same time.
+
+
+
+
+
+
+
+
+
 //
 //  SceneDelegate.swift
 //  fair-share
