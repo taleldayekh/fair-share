@@ -1,3 +1,12 @@
+// Contains life cycle events off the app, code for managing my app (we rearly add code here)
+
+
+
+
+
+
+
+
 //
 //  AppDelegate.swift
 //  fair-share
