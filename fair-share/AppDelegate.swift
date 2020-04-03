@@ -1,18 +1,9 @@
-// Contains life cycle events off the app, code for managing my app (we rearly add code here)
-
-
-
-
-
-
-
-
 //
 //  AppDelegate.swift
 //  fair-share
 //
-//  Created by Talel Dayekh on 2019-12-18.
-//  Copyright © 2019 Talel Dayekh. All rights reserved.
+//  Created by Talel Dayekh on 2020-04-03.
+//  Copyright © 2020 Talel Dayekh. All rights reserved.
 //
 
 import UIKit
@@ -43,4 +34,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
