@@ -4,7 +4,6 @@ opt_in_rules:
   - trailing_newline
 line_length:
   warning: 100
-  error: 110
   ignores_function_declarations: true
   ignores_urls: true
 function_body_length:
