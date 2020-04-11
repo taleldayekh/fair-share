@@ -1,0 +1,26 @@
+{
+  "name": "fair-share-backend",
+  "description": "Fair Share app backend with GraphQL API",
+  "author": "Talel Dayekh",
+  "version": "1.0.0",
+  "license": "GPL-3.0-or-later",
+  "main": "dist/server.js",
+  "scripts": {
+    "serve": "tsc && node dist/server.js",
+    "style": "npm run prettier && npm run lint",
+    "prettier": "prettier --write ./src/**/*.ts",
+    "lint": "eslint ./src/**/*.ts"
+  },
+  "dependencies": {
+    "graphql": "^15.0.0",
+    "rxjs": "^6.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "prettier": "2.0.2",
+    "typescript": "^3.8.3"
+  }
+}
