@@ -1,4 +1,4 @@
-# `backend api`: src/server/src/api
+# `backend api`: _*src/server/src/api*_
 Pure [Node.js](https://nodejs.org/api/https.html) web server with a [GraphQL](https://graphql.org/graphql-js/) based API.
 
 ## Folder Structure
