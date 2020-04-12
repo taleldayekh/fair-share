@@ -1,7 +1,9 @@
 # `backend api`: _*src/server/src/api*_
+
 Pure [Node.js](https://nodejs.org/api/https.html) web server with a [GraphQL](https://graphql.org/graphql-js/) based API.
 
 ## Folder Structure
+
 ```
   api/
 1 |-- models
@@ -16,10 +18,10 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with a [GraphQL](ht
    A set of functions for each resource which are used to query or mutate the database data.
 
 2. **mutations**  
-   _*Add description*_
+   A set of resolver functions which define how to create, update or delete data.
 
 3. **queries**  
-   _*Add description*_
+   A set of resolver functions which define how data for a field is being fetched.
 
 4. **types**  
    _*Add description*_
@@ -29,4 +31,3 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with a [GraphQL](ht
 
 6. **server.ts**  
    Runs the server.
-   
