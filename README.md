@@ -18,16 +18,16 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with a [GraphQL](ht
    A set of functions for each resource which are used to query or mutate the database data.
 
 2. **mutations**  
-   A set of resolver functions which define how to create, update or delete data.
+   A set of resolver functions which define how data for a field is created, updated or deleted.
 
 3. **queries**  
-   A set of resolver functions which define how data for a field is being fetched.
+   A set of resolver functions which define how data for a field is fetched.
 
 4. **types**  
-   _*Add description*_
+   GraphQL type definitions describing the fields that can be queried and mutated and the relationship between them.
 
 5. **schema.ts**  
-   _*Add description*_
+   Generates the schema from the Query and Mutation types.
 
 6. **server.ts**  
    Runs the server.
