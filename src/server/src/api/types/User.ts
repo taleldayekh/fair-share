@@ -15,10 +15,10 @@ export class User {
   public username: string;
   public spendingGroupsId?: number[];
 
-  constructor(db_row: DBUser) {
-    this.id = db_row.id;
-    this.username = db_row.username;
-    this.spendingGroupsId = db_row.spendingGroupsId;
+  constructor(dbRow: DBUser) {
+    this.id = dbRow.id;
+    this.username = dbRow.username;
+    this.spendingGroupsId = dbRow.spendingGroupsId;
   }
 
   spendingGroups(): SpendingGroup[] {

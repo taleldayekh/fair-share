@@ -14,9 +14,9 @@ export class SpendingGroup {
   public id: number;
   public groupName: string;
 
-  constructor(db_row: DBSpendingGroup) {
-    this.id = db_row.id;
-    this.groupName = db_row.groupName;
+  constructor(dbRow: DBSpendingGroup) {
+    this.id = dbRow.id;
+    this.groupName = dbRow.groupName;
   }
 
   users(): User[] {
