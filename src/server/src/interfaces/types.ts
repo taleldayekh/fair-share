@@ -1,10 +1,10 @@
 export interface DBUser {
-  id: string;
+  id: number;
   username: string;
-  spendingGroupsId?: [string];
+  spendingGroupsId?: number[];
 }
 
 export interface DBSpendingGroup {
-  id: string;
+  id: number;
   groupName: string;
 }

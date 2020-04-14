@@ -27,7 +27,7 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with a [GraphQL](ht
    GraphQL type definitions describing the fields that can be queried and mutated and the relationship between them.
 
 5. **schema.ts**  
-   Generates the schema from the Query and Mutation types.
+   Generates the schema from the types.
 
 6. **server.ts**  
    Runs the server.
