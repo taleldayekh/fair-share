@@ -1,18 +1,16 @@
-# Table of Contents
+## Table of Contents
 
 - [Backend API](#backend-api)
   - [Folder Structure](#folder-structure)
-  - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#img-srchttpsrendergithubusercontentcomrendermathmathlarge-n2b1-problem)
+  - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#<img-srchttpsrendergithubusercontentcomrendermathmathlarge-n2b1>-problem)
 
-# Backend API
+## Backend API
 
-### [_*src/server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/src/server/src/api)
-
----
+#### [_*src/server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/src/server/src/api)
 
 Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based on [GraphQL.js](https://graphql.org/graphql-js/).
 
-## Folder Structure
+### Folder Structure
 
 ```
   api/
@@ -46,4 +44,4 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based o
 7. **server.ts**  
    Runs the server.
 
-## <img src='https://render.githubusercontent.com/render/math?math=\Large n%2B1'> Problem
+### <img src='https://render.githubusercontent.com/render/math?math=\large n%2B1'> Problem
