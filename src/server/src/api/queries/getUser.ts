@@ -3,6 +3,7 @@ import { User } from '../types/User';
 import { users } from '../tests/dummy-db';
 
 export default (userId: number): User => {
+  // TODO: Replace with query to real db
   const user = users.find((user) => user.id === userId);
   // TODO: Properly handle errors in GraphQL
   if (!user) {

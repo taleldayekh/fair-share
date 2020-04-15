@@ -1,6 +1,6 @@
 import { createServer, Server, IncomingMessage, ServerResponse } from 'http';
 import { graphql, buildSchema } from 'graphql';
-import { RootQuery } from './api/types/RootQuery';
+import { Root } from './api/types/Root';
 import schema from './api/schema';
 
 // TODO: Store port in environment variable
@@ -18,7 +18,7 @@ server.on('request', (req: IncomingMessage, res: ServerResponse) => {
           query = chunk.toString();
         });
         req.on('end', () => {
-          graphql(buildSchema(schema), query, new RootQuery()).then((data) => {
+          graphql(buildSchema(schema), query, new Root()).then((data) => {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.write(JSON.stringify(data));
             res.end();
