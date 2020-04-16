@@ -1,3 +1,11 @@
+# Build
+dist/
+
+# Node
 node_modules
+
+# CocoaPods
+Pods/
+
+# Editor
 .vscode
-dist
