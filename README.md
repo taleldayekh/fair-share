@@ -2,7 +2,7 @@
 
 - [Backend API](#backend-api)
   - [Folder Structure](#folder-structure)
-  - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#problem)
+  - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#-problem)
 
 ## Backend API
 
