@@ -2,6 +2,7 @@
 
 - [Backend API](#backend-api)
   - [Folder Structure](#folder-structure)
+  - [GraphQL Graph](#graphql-graph)
   - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#-problem)
 
 ## Backend API
@@ -43,5 +44,7 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based o
 
 7. **server.ts**  
    Runs the server.
+
+### GraphQL Graph
 
 ### <img src='https://render.githubusercontent.com/render/math?math=\large n%2B1'> Problem
