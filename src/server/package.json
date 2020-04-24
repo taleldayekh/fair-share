@@ -4,9 +4,9 @@
   "author": "Talel Dayekh",
   "version": "1.0.0",
   "license": "GPL-3.0-or-later",
-  "main": "dist/server.js",
+  "main": "dist/api/server.js",
   "scripts": {
-    "serve": "tsc && node dist/server.js",
+    "serve:api": "tsc && node dist/api/server.js",
     "style": "npm run prettier && npm run lint",
     "prettier": "prettier --write ./src/**/*.ts",
     "lint": "eslint ./src/**/*.ts"
