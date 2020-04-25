@@ -4,29 +4,38 @@ import getUserSpendingGroups from '../queries/getUserSpendingGroups';
 
 export const UserType = `
   type User {
+    createdAt: DateTime!
+    email: String!
     id: ID!
-    username: String!
+    name: String!
+    participatingSpendingGroups: [SpendingGroup]
     spendingGroups: [SpendingGroup]
   }
 `;
 
 export class User {
+  public createdAt: string;
+  public email: string;
   public id: number;
-  public username: string;
-  public spendingGroupsId?: number[];
+  public name: string;
 
   constructor(dbRow: DBUser) {
+    this.createdAt = dbRow.createdAt;
+    this.email = dbRow.email;
     this.id = dbRow.id;
-    this.username = dbRow.username;
-    this.spendingGroupsId = dbRow.spendingGroupsId;
+    this.name = dbRow.name;
+  }
+
+  participatingSpendingGroups(): SpendingGroup[] {
+    // TODO: Add function
   }
 
   spendingGroups(): SpendingGroup[] {
-    if (!this.spendingGroupsId) {
+    if () {
       // TODO: Properly handle errors in GraphQL
       throw new Error('GraphQL Error');
     }
-
-    return getUserSpendingGroups(this.spendingGroupsId);
+    // TODO: Fix broken function
+    return getUserSpendingGroups();
   }
 }
