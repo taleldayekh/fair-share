@@ -1,13 +1,16 @@
 export interface DBUser {
-  createdAt: string;
-  email: string;
   id: number;
   name: string;
-  participatingSpendingGroups?: DBSpendingGroup[];
-  spendingGroups?: DBSpendingGroup[];
+  email: string;
+  createdAt: Date;
+  spendingGroups?: number[];
+  participatingSpendingGroups?: number[];
 }
 
 export interface DBSpendingGroup {
   id: number;
-  groupName: string;
+  owner: number;
+  name: string;
+  createdAt: Date;
+  participants?: number[];
 }
