@@ -19,8 +19,8 @@ export class User {
   public name: string;
   public email: string;
   public createdAt: Date;
-  private _spendingGroups?: number[];
-  private _participatingSpendingGroups?: number[];
+  private _spendingGroups: number[];
+  private _participatingSpendingGroups: number[];
 
   constructor(dbRow: DBUser) {
     this.id = dbRow.id;
@@ -33,7 +33,7 @@ export class User {
 
   // List of spending groups that the user is an owner of
   spendingGroups(): SpendingGroup[] {
-    if (!this._spendingGroups) {
+    if (!this._spendingGroups.length) {
       throw new Error('User does not own any spending groups');
     }
 
@@ -42,7 +42,7 @@ export class User {
 
   // List of spending groups that the user is a part of
   participatingSpendingGroups(): SpendingGroup[] {
-    if (!this._participatingSpendingGroups) {
+    if (!this._participatingSpendingGroups.length) {
       throw new Error('User is not part of any spending groups');
     }
 

@@ -3,8 +3,8 @@ export interface DBUser {
   name: string;
   email: string;
   createdAt: Date;
-  spendingGroups?: number[];
-  participatingSpendingGroups?: number[];
+  spendingGroups: number[];
+  participatingSpendingGroups: number[];
 }
 
 export interface DBSpendingGroup {
