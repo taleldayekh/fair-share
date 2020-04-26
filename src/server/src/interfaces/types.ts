@@ -12,5 +12,5 @@ export interface DBSpendingGroup {
   owner: number;
   name: string;
   createdAt: Date;
-  participants?: number[];
+  participants: number[];
 }

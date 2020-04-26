@@ -1,6 +1,7 @@
 import { DBSpendingGroup } from '../../interfaces/types';
 import { User } from './User';
 import getSpendingGroupOwner from '../queries/getSpendingGroupOwner';
+import getSpendingGroupParticipants from '../queries/getSpendingGroupParticipants';
 
 export const SpendingGroupType = `
   type SpendingGroup {
@@ -17,7 +18,7 @@ export class SpendingGroup {
   private _owner: number;
   public name: string;
   public createdAt: Date;
-  private _participants?: number[];
+  private _participants: number[];
 
   constructor(dbRow: DBSpendingGroup) {
     this.id = dbRow.id;
@@ -33,7 +34,7 @@ export class SpendingGroup {
   }
 
   // List of users that are part of a spending group
-  participants() {
-    return this._participants;
+  participants(): User[] {
+    return getSpendingGroupParticipants(this._participants);
   }
 }
