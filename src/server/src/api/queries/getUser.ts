@@ -1,13 +1,11 @@
 import { User } from '../types/User';
-// TODO: Remove import
-import { users } from '../tests/dummy-db';
+import { db } from '../tests/db';
 
-export default (userId: number): User => {
-  // TODO: Replace with query to real db
-  const user = users.find((user) => user.id === userId);
-  // TODO: Properly handle errors in GraphQL
+export default (id: number): User => {
+  const user = db.users.find((user) => user.id === id);
+
   if (!user) {
-    throw new Error('GraphQL Error');
+    throw new Error('User does not exist');
   }
 
   return new User(user);
