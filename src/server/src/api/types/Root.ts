@@ -18,7 +18,7 @@ export const RootMutationType = `
 `;
 
 export class Root {
-  // TODO: Replace any type
+  // TODO: Replace any type with type for { Id: 1, name }
   // Queries
   user(args: any): User {
     return getUser(args.id);
