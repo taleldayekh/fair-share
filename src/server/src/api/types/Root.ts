@@ -18,15 +18,13 @@ export const RootMutationType = `
 `;
 
 export class Root {
-  // TODO: Replace any type with type for { Id: 1, name }
   // Queries
-  user(args: any): User {
+  user(args: { id: number }): User {
     return getUser(args.id);
   }
 
-  // TODO: Replace any type
   // Mutations
-  addUser(args: any): User {
+  addUser(args: { email: string; name: string }): User {
     return createUser(args.email, args.name);
   }
 
