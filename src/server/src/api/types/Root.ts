@@ -28,8 +28,7 @@ export class Root {
     return createUser(args.email, args.name);
   }
 
-  createSpendingGroup(args: any): SpendingGroup {
-    console.log(args);
+  createSpendingGroup(args: { userId: number; name: string }): SpendingGroup {
     return createSpendingGroup(args.userId, args.name);
   }
 }
