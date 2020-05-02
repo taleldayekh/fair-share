@@ -1,11 +1,33 @@
 ## Table of Contents
 
-- [Backend API](#backend-api)
+- [Architecture](#architecture)
+- [Data Storage](#data-storage)
+- [API](#api)
   - [Folder Structure](#folder-structure)
   - [GraphQL Graph](#graphql-graph)
   - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#-problem)
 
-## Backend API
+## Architecture
+
+```
+┌─────────────────┐
+│   Controllers   │
+└─────────────────┘
+         │
+┌─────────────────┐
+│     Services    │
+└─────────────────┘
+         │
+┌─────────────────┐
+│      Models     │
+└─────────────────┘
+```
+
+## Data Storage
+
+RethinkDB NoSQL database.
+
+## API
 
 #### [_*src/server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/src/server/src/api)
 
