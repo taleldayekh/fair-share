@@ -1,7 +1,8 @@
 ## Table of Contents
 
 - [Architecture](#architecture)
-  - [Server-side Layers Overview](#server-side-layers-overview)
+  - [Server Side Layers Overview](#server-side-layers-overview)
+  - [Data Access Layer](#data-access-layer)
 - [Data Storage](#data-storage)
 - [API](#api)
   - [Folder Structure](#folder-structure)
@@ -12,19 +13,24 @@
 
 TXT
 
-### Server-side Layers Overview
+### Server Side Layers Overview
 
 ```
-╭─────────────────────────────╮
-│                             │
-│      Data Access Layer      │
-│                             │
-╰─────────────────────────────╯
+╭──── Data Access Layer ────╮
+│                           │
+│          Models           │
+│                           │
+╰───────────────────────────╯
 ```
 
 ### Data Access Layer
 
-Contains models and all the database queries and mutation
+The _*Data Access Layer*_ contains persistence logic and is an abstraction of the database interactions.
+
+Components belonging to the _*Data Access Layer*_:
+
+- **Models**  
+  TXT
 
 ## Data Storage
 
