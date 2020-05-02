@@ -1,6 +1,7 @@
 ## Table of Contents
 
 - [Architecture](#architecture)
+  - [Server-side Layers Overview](#server-side-layers-overview)
 - [Data Storage](#data-storage)
 - [API](#api)
   - [Folder Structure](#folder-structure)
@@ -9,19 +10,21 @@
 
 ## Architecture
 
+TXT
+
+### Server-side Layers Overview
+
 ```
-┌─────────────────┐
-│   Controllers   │
-└─────────────────┘
-         │
-┌─────────────────┐
-│     Services    │
-└─────────────────┘
-         │
-┌─────────────────┐
-│      Models     │
-└─────────────────┘
+╭─────────────────────────────╮
+│                             │
+│      Data Access Layer      │
+│                             │
+╰─────────────────────────────╯
 ```
+
+### Data Access Layer
+
+Contains models and all the database queries and mutation
 
 ## Data Storage
 
