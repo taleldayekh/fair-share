@@ -16,11 +16,11 @@ TXT
 ### Server Side Layers Overview
 
 ```
-╭──── Data Access Layer ────╮
-│                           │
-│          Models           │
-│                           │
-╰───────────────────────────╯
+╭──── Data Access Layer ────╮            ╭ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ╮
+│                           │ ─────────► ∣                           ∣
+│          Models           │            ∣        Data Storage       ∣
+│                           │ ◄───────── ∣                           ∣
+╰───────────────────────────╯            ╰ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ╯
 ```
 
 ### Data Access Layer
