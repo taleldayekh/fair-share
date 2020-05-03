@@ -1,28 +1,34 @@
 import { User } from './User';
+import { SpendingGroup } from './SpendingGroup';
 import getUser from '../queries/getUser';
 import createUser from '../mutations/createUser';
+import createSpendingGroup from '../mutations/createSpendingGroup';
 
 export const RootQueryType = `
-	type Query {
-		user(id: Int): User
-	}
+  type Query {
+    user(id: Int!): User
+  }
 `;
 
 export const RootMutationType = `
   type Mutation {
-    addUser(username: String): User
+    addUser(email: String!, name: String!): User
+    createSpendingGroup(userId: Int! name: String!): SpendingGroup
   }
 `;
 
 export class Root {
-  // TODO: Replace any type with a meaningful type
   // Queries
-  user(args: any): User {
+  user(args: { id: number }): User {
     return getUser(args.id);
   }
-  // TODO: Replace any type with a meaningful type
+
   // Mutations
-  addUser(args: any) {
-    return createUser(args.username);
+  addUser(args: { email: string; name: string }): User {
+    return createUser(args.email, args.name);
+  }
+
+  createSpendingGroup(args: { userId: number; name: string }): SpendingGroup {
+    return createSpendingGroup(args.userId, args.name);
   }
 }
