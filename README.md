@@ -30,7 +30,7 @@ The _*Data Access Layer*_ contains persistence logic and is an abstraction of th
 Components belonging to the _*Data Access Layer*_:
 
 - **Models**  
-  Each model holds functions for making domain specific queries and mutations to the database data. A model handles requests from the _*Controller Layer*_ and returns a model object.
+  The models handle requests from the _*Controller Layer*_ and returns a model object. Each model holds a set of functions for making domain specific queries and mutations to the database data.
 
 ### Data Storage
 
