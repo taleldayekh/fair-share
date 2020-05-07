@@ -14,3 +14,5 @@ export interface DBSpendingGroup {
   createdAt: Date;
   participants: number[];
 }
+
+export interface DBSpendingGroupParticipant {}
