@@ -1,2 +1,1 @@
-import rethinkdb as r
-rdb = r.RethinkDB()
+const r = require('rethinkdb');
