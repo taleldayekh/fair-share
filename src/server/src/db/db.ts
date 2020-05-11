@@ -1,10 +1,10 @@
-const r = require('rethinkdb');
+import { r } from 'rethinkdb-ts';
 
-// TODO: Environment variables for connecting to either test db or prod db
+// TODO: Environment variables and flags for connecting to either test db or prod db
 const DB_OPTIONS = {
   db: 'fairsharedb',
 };
-// TODO: Environment variables for connect options and create separate connections for dev, test and prod
+// TODO: Environment variables for connect options and flags for dev, test and prod connections
 const CONNECT_OPTIONS = {
   host: 'localhost',
   port: 28015,
@@ -14,10 +14,7 @@ const config = {
   ...CONNECT_OPTIONS,
 };
 
-let connection = null;
-
-// TODO: Replace any type
-r.connect(config, (err: any, conn: any) => {
-  if (err) throw err;
-  connection = conn;
-});
+export default async () => {
+  await r.connectPool(config);
+  return r;
+};
