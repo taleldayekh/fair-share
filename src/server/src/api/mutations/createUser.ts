@@ -1,5 +1,5 @@
-import { User } from '../types/User';
-import { db } from '../tests/db';
+import { User } from '@/api/types/User';
+import { db } from '@/api/tests/db';
 
 export default (email: string, name: string): User => {
   if (db.users.find((user) => user.email === email)) {

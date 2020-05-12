@@ -1,7 +1,7 @@
-import { DBUser } from '../../interfaces/types';
-import { SpendingGroup } from './SpendingGroup';
-import getUserSpendingGroups from '../queries/getUserSpendingGroups';
-import getUserParticipatingSpendingGroups from '../queries/getUserParticipatingSpendingGroups';
+import { DBUser } from '@/interfaces/types';
+import { SpendingGroup } from '@/api/types/SpendingGroup';
+import getUserSpendingGroups from '@/api/queries/getUserSpendingGroups';
+import getUserParticipatingSpendingGroups from '@/api/queries/getUserParticipatingSpendingGroups';
 
 export const UserType = `
   type User {

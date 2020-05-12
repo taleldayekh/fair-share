@@ -1,8 +1,8 @@
-import { User } from './User';
-import { SpendingGroup } from './SpendingGroup';
-import getUser from '../queries/getUser';
-import createUser from '../mutations/createUser';
-import createSpendingGroup from '../mutations/createSpendingGroup';
+import { User } from '@/api/types/User';
+import { SpendingGroup } from '@/api/types/SpendingGroup';
+import getUser from '@/api/queries/getUser';
+import createUser from '@/api/mutations/createUser';
+import createSpendingGroup from '@/api/mutations/createSpendingGroup';
 
 export const RootQueryType = `
   type Query {

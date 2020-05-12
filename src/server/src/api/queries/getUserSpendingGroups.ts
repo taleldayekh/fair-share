@@ -1,5 +1,5 @@
-import { SpendingGroup } from '../types/SpendingGroup';
-import { db } from '../tests/db';
+import { SpendingGroup } from '@/api/types/SpendingGroup';
+import { db } from '@/api/tests/db';
 
 export default (spendingGroups: number[]): SpendingGroup[] => {
   const userSpendingGroups = db.spendingGroups

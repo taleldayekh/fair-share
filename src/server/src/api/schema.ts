@@ -1,6 +1,6 @@
-import { RootQueryType, RootMutationType } from './types/Root';
-import { SpendingGroupType } from './types/SpendingGroup';
-import { UserType } from './types/User';
+import { RootQueryType, RootMutationType } from '@/api//types/Root';
+import { SpendingGroupType } from '@/api/types/SpendingGroup';
+import { UserType } from '@/api/types/User';
 
 export default [
   RootQueryType,

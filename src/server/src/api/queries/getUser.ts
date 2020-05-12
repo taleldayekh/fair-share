@@ -1,5 +1,5 @@
-import { User } from '../types/User';
-import { db } from '../tests/db';
+import { User } from '@/api/types/User';
+import { db } from '@/api/tests/db';
 
 export default (id: number): User => {
   const user = db.users.find((user) => user.id === id);
