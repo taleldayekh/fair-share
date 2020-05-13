@@ -1,10 +1,4 @@
-import { RootQueryType, RootMutationType } from '@/api//types/Root';
-import { SpendingGroupType } from '@/api/types/SpendingGroup';
-import { UserType } from '@/api/types/User';
+import { RootQueryType } from './types/Root';
+import { UserType } from './types/User';
 
-export default [
-  RootQueryType,
-  RootMutationType,
-  SpendingGroupType,
-  UserType,
-].join('\n\n');
+export default [RootQueryType, UserType].join('\n\n');
