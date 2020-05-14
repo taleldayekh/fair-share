@@ -14,7 +14,6 @@ const config = {
   ...CONNECT_OPTIONS,
 };
 
-export default async () => {
-  await r.connectPool(config);
-  return r;
-};
+r.connectPool(config);
+
+export const db = r;
