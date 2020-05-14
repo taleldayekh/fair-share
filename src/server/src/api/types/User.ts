@@ -1,4 +1,4 @@
-// import { IDBUser } from '../../interfaces/types';
+import { IDBUser } from '../../interfaces/types';
 
 const UserType = `
   type User {
@@ -13,7 +13,7 @@ class User {
   public name: string;
   public email: string;
 
-  constructor(dbUser: any) {
+  constructor(dbUser: IDBUser) {
     this.id = dbUser.id;
     this.name = dbUser.name;
     this.email = dbUser.email;

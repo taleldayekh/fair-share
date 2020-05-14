@@ -1,4 +1,4 @@
-// import { User } from '../types/User';
+import { User } from '../types/User';
 import { GetUserArgs } from '../../models/user';
 import getUserByEmail from '../queries/user/getUserByEmail';
 
@@ -10,8 +10,8 @@ const RootQueryType = `
 
 class Root {
   // Queries
-  userByEmail(args: GetUserArgs) {
-    return getUserByEmail(args.email);
+  async userByEmail(args: GetUserArgs): Promise<User> {
+    return await getUserByEmail(args.email);
   }
 }
 
