@@ -7,16 +7,18 @@
   "main": "dist/api/server.js",
   "scripts": {
     "serve:api": "tsc && node dist/api/server.js",
+    "test": "jest",
     "style": "npm run prettier && npm run lint",
     "prettier": "prettier --write ./src/**/*.ts",
     "lint": "eslint ./src/**/*.ts"
   },
   "dependencies": {
     "graphql": "^15.0.0",
-    "rethinkdb": "^2.4.2",
+    "rethinkdb-ts": "^2.4.2",
     "rxjs": "^6.5.5"
   },
   "devDependencies": {
+    "@types/jest": "^25.2.2",
     "@types/node": "^13.11.0",
     "@types/rethinkdb": "^2.3.14",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
