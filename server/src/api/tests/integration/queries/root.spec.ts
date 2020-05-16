@@ -1,4 +1,5 @@
 import { GraphQLRequest } from '../../utils';
+import { testData } from '../../../../testing/test-data';
 
 describe('root queries', () => {
   const request = new GraphQLRequest();
@@ -13,7 +14,9 @@ describe('root queries', () => {
             }
         }
       `;
-
+    const userTalel = testData.users[0];
     const res = await request.query(query);
+
+    expect(res).toMatchObject({ data: { userByEmail: userTalel } });
   });
 });
