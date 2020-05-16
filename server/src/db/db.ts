@@ -1,8 +1,7 @@
 import { r } from 'rethinkdb-ts';
 
-// TODO: Environment variables and flags for connecting to either test db or prod db
 const DB_OPTIONS = {
-  db: 'fairsharedb',
+  db: process.env.TEST_DB ? 'testdb' : 'fairsharedb',
 };
 // TODO: Environment variables for connect options and flags for dev, test and prod connections
 const CONNECT_OPTIONS = {
