@@ -1,7 +1,7 @@
 import { createServer, Server, IncomingMessage, ServerResponse } from 'http';
 import { graphql, buildSchema } from 'graphql';
-import { Root } from '@/api/types/Root';
-import schema from '@/api/schema';
+import { Root } from './types/Root';
+import schema from './schema';
 
 // TODO: Store port in environment variable
 const port: number = 666;
