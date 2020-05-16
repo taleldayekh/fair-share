@@ -12,13 +12,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: docker run
+      - run: |
+          docker run rethinkdb
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       #   - run: npm ci
-      - run: source /etc/lsb-release && echo "deb https://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
-      - run: wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
-      - run: sudo apt-get update
-      - run: sudo apt-get install rethinkdb
       - run: npm test
