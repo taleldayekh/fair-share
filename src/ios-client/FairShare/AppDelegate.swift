@@ -13,7 +13,7 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GIDSignIn.sharedInstance().clientID = ""
+        GIDSignIn.sharedInstance().clientID = "462466493994-mvii0evv4jlr4q9dkt42n3fdjq3ovdb0.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         return true
     }
