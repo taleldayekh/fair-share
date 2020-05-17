@@ -31,7 +31,7 @@ jobs:
           npm install
 
       - name: "Start DB"
-        run: rethinkdb
+        run: docker run -d rethinkdb
 
       - name: "Run api tests"
         run: |
