@@ -31,7 +31,7 @@ jobs:
           npm install
 
       - name: "Start DB"
-        run: sudo systemctl start rethinkdb
+        run: start rethinkdb
 
       - name: "Run api tests"
         run: |
