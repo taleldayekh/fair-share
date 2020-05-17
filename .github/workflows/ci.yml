@@ -15,7 +15,6 @@ jobs:
       rethinkdb:
         # Docker Hub image
         image: rethinkdb
-        command: rethinkdb
         ports:
           - "8181:8080"
           - "48015:28015"
@@ -36,8 +35,8 @@ jobs:
           cd server
           npm install
 
-      # - name: "Start DB"
-      #   run: rethinkdb
+      - name: "Start DB"
+        run: rethinkdb
 
       - name: "Run api tests"
         run: |
