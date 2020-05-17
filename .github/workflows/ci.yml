@@ -9,10 +9,13 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
 
+      - name: "Change to server dir"
+        run: cd server
+
       - name: "Setup Node.js"
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
 
-      - name: "npm install"
+      - name: "Install server dependencies"
         run: npm install
