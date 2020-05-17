@@ -15,10 +15,10 @@ jobs:
       rethinkdb:
         # Docker Hub image
         image: rethinkdb
+        command: rethinkdb
         ports:
           - "8181:8080"
           - "48015:28015"
-        command: rethinkdb
         # volumes:
         #   - ./tls:/tls
 
