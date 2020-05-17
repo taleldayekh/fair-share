@@ -5,7 +5,7 @@ const DB_OPTIONS = {
 };
 // TODO: Environment variables for connect options and flags for dev, test and prod connections
 const CONNECT_OPTIONS = {
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 28015,
 };
 const config = {
