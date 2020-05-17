@@ -16,6 +16,14 @@ TXT
 ### Server Side Layers Overview
 
 ```
+╭──── Controller Layer ─────╮
+│                           │
+│            API            │
+│                           │
+╰───────────────────────────╯
+
+
+
 ╭──── Data Access Layer ────╮            ╭ ─ ─ Persistence Layer ─ ─ ╮
 │                           │            ∣                           ∣
 │          Models           │ ─────────► ∣        Data Storage       ∣
@@ -34,9 +42,16 @@ _*Data Access Layer*_ components:
 
 ### Persistence Layer
 
+The _*Persistence Layer*_ handles the persistence of data and is indirectly used by the business rules. The _*Persistence Layer*_ does not know about the _*Data Access Layer*_.
+
+_*Persistence Layer*_ components:
+
+- **Data Storage**  
+  [RethinkDB](https://rethinkdb.com/) NoSQL database.
+
 ## API
 
-#### [_*src/server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/src/server/src/api)
+#### [_*src/server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/server/src/api)
 
 Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based on [GraphQL.js](https://graphql.org/graphql-js/).
 
@@ -59,7 +74,7 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based o
    A set of resolver functions which define how data for a field is fetched.
 
 3. **tests**  
-   Unit tests for queries and mutations.
+   Integration tests for queries and mutations.
 
 4. **types**  
    The GraphQL schema divided into parts and specified using the GraphQL SDL (schema definition language) together with the type definitions that describe which fields can be queried and mutated and the relationship between them.
