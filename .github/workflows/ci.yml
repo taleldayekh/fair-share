@@ -15,6 +15,11 @@ jobs:
       rethinkdb:
         # Docker Hub image
         image: rethinkdb
+        ports:
+          - "8181:8080"
+          - "48015:28015"
+        # volumes:
+        #   - ./tls:/tls
 
     steps:
       - name: "Checkout"
@@ -31,8 +36,7 @@ jobs:
           npm install
 
       - name: "Start DB"
-        run: |
-          sudo systemctl start rethinkdb
+        run: rethinkdb
 
       - name: "Run api tests"
         run: |
