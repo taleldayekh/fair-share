@@ -8,7 +8,7 @@ type DBTable = 'users';
 export default async () => {
   await r.connectPool({
     db: 'testdb',
-    host: '0.0.0.0',
+    host: 'rethinkdb',
     port: 28015,
   });
 
