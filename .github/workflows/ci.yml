@@ -33,6 +33,7 @@ jobs:
       - name: "Run api tests"
         run: |
           cd server
+          npm run serve:api:test
           npm run test
 
 # name: CI
