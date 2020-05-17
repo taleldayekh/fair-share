@@ -35,8 +35,8 @@ jobs:
           cd server
           npm install
 
-      - name: "Start DB"
-        run: rethinkdb
+      # - name: "Start DB"
+      #   run: rethinkdb
 
       - name: "Run api tests"
         run: |
