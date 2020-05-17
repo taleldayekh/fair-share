@@ -20,4 +20,6 @@ jobs:
           npm install
 
       - name: "Run api tests"
-        run: npm run test
+        run: |
+          cd server
+          npm run test
