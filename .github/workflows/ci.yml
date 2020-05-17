@@ -31,7 +31,7 @@ jobs:
           npm install
 
       - name: "Start DB"
-        run: start rethinkdb
+        run: rethinkdb
 
       - name: "Run api tests"
         run: |
