@@ -3,7 +3,7 @@
 - [Architecture](#architecture)
   - [Server Side Layers Overview](#server-side-layers-overview)
   - [Data Access Layer](#data-access-layer)
-  - [Data Storage](#data-storage)
+  - [Persistence Layer](#persistence-layer)
 - [API](#api)
   - [Folder Structure](#folder-structure)
   - [GraphQL Graph](#graphql-graph)
@@ -16,25 +16,23 @@ TXT
 ### Server Side Layers Overview
 
 ```
-╭──── Data Access Layer ────╮            ╭ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ╮
-│                           │ ─────────► ∣                           ∣
-│          Models           │            ∣        Data Storage       ∣
-│                           │ ◄───────── ∣                           ∣
+╭──── Data Access Layer ────╮            ╭ ─ ─ Persistence Layer ─ ─ ╮
+│                           │            ∣                           ∣
+│          Models           │ ─────────► ∣        Data Storage       ∣
+│                           │            ∣                           ∣
 ╰───────────────────────────╯            ╰ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ╯
 ```
 
 ### Data Access Layer
 
-The _*Data Access Layer*_ contains persistence logic and is an abstraction of the database interactions.
+The _*Data Access Layer*_ is an abstraction of the database interactions. It draws a line between the database and the business rules. The _*Data Access Layer*_ knows about the _*Persistence Layer*_.
 
-Components belonging to the _*Data Access Layer*_:
+_*Data Access Layer*_ components:
 
 - **Models**  
-  The models handle requests from the _*Controller Layer*_ and returns a model object. Each model holds a set of functions for making domain specific queries and mutations to the database data.
+  Each model holds a set of data access functions for making domain specific queries and mutations to the database. The models translate calls from the business rules into the query language used by the database. Switching databases would only require changes in the models.
 
-### Data Storage
-
-RethinkDB NoSQL database.
+### Persistence Layer
 
 ## API
 
