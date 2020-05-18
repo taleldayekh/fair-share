@@ -3,7 +3,7 @@ name: CI
 on: pull_request
 
 jobs:
-  rethinkdb-container:
+  CI:
     runs-on: ubuntu-latest
     container: rethinkdb
 
@@ -12,6 +12,7 @@ jobs:
         image: rethinkdb
         ports:
           - "8080:8080"
+          - "28015:28015"
 
     steps:
       - name: "Checkout"
