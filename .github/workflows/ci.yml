@@ -1,25 +1,16 @@
 name: CI
+
 on: pull_request
 
 jobs:
-  # Label of the container job
-  container-job:
-    # Containers must run in Linux based operating systems
+  rethinkdb-container:
     runs-on: ubuntu-latest
-    # Docker Hub image that `container-job` executes in
     container: rethinkdb
 
-    # Service containers to run with `container-job`
     services:
-      # Label used to access the service container
-      rethinkdb:
-        # Docker Hub image
+      localhost:
         image: rethinkdb
-        ports:
-          - "8080:8080"
-          - "28015:28015"
-        # volumes:
-        #   - ./tls:/tls
+        ports: "8080:8080"
 
     steps:
       - name: "Checkout"
@@ -35,60 +26,8 @@ jobs:
           cd server
           npm install
 
-      # - name: "Start DB"
-      #   run: rethinkdb
-
-      - name: "Run api tests"
+      - name: "Run tests"
         run: |
-          cd server
-          npm ci
           npm run build
           npm run serve:api:test &
           npm run test
-      # - name: "actually run the tests here"
-      #   run: |
-      #     cd server
-      #     npm run test
-  # test-api:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: "Checkout"
-  #       uses: actions/checkout@v2
-  #     - name: "Setup Node.js"
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12.x
-  #     - name: "Install server dependencies"
-  #       run: |
-  #         cd server
-  #         npm install
-  #     - name: "Run api tests"
-  #       run: |
-  #         cd server
-  #         npm run test
-
-# name: CI
-
-# on: pull_request
-
-# jobs:
-#   test-api:
-#     runs-on: ubuntu-latest
-#     steps:
-# - name: "Checkout"
-#   uses: actions/checkout@v2
-
-# - name: "Setup Node.js"
-#   uses: actions/setup-node@v1
-#   with:
-#     node-version: 12.x
-
-# - name: "Install server dependencies"
-#   run: |
-#     cd server
-#     npm install
-
-# - name: "Run api tests"
-#   run: |
-#     cd server
-#     npm run test

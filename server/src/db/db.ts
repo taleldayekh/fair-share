@@ -5,7 +5,7 @@ const DB_OPTIONS = {
 };
 // TODO: Environment variables for connect options and flags for dev, test and prod connections
 const CONNECT_OPTIONS = {
-  host: 'rethinkdb',
+  host: 'localhost',
   port: 28015,
 };
 const config = {

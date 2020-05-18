@@ -33,7 +33,7 @@ TXT
 
 ### Data Access Layer
 
-The _*Data Access Layer*_ is an abstraction of the database interactions. It draws a line between the database and the business rules. The _*Data Access Layer*_ knows about the _*Persistence Layer*_.
+The _*Data Access Layer*_ is an abstraction of the database interactions. It draws a boundary between the database and the business rules. The _*Data Access Layer*_ cares about the _*Persistence Layer*_.
 
 _*Data Access Layer*_ components:
 
@@ -42,7 +42,7 @@ _*Data Access Layer*_ components:
 
 ### Persistence Layer
 
-The _*Persistence Layer*_ handles the persistence of data and is indirectly used by the business rules. The _*Persistence Layer*_ does not know about the _*Data Access Layer*_.
+The _*Persistence Layer*_ handles the persistence of data and is indirectly used by the business rules. The _*Persistence Layer*_ does not care about the _*Data Access Layer*_.
 
 _*Persistence Layer*_ components:
 
@@ -51,7 +51,7 @@ _*Persistence Layer*_ components:
 
 ## API
 
-#### [_*src/server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/server/src/api)
+#### [_*server/src/api*_](https://github.com/taleldayekh/fair-share/tree/master/server/src/api)
 
 Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based on [GraphQL.js](https://graphql.org/graphql-js/).
 

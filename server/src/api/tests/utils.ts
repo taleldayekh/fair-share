@@ -1,7 +1,7 @@
-import http from 'http';
+import http, { IncomingMessage } from 'http';
 
 class GraphQLRequest {
-  private _request(postData: string) {
+  private _request(reqData: string) {
     const options = {
       // TODO: Replace hard coded values with environment variables
       hostname: 'localhost',
@@ -15,10 +15,10 @@ class GraphQLRequest {
 
     return new Promise((resolve, reject) => {
       // TODO: Replace any types
-      const req = http.request(options, (res: any) => {
+      const req = http.request(options, (res: IncomingMessage) => {
         let resBody = '';
 
-        res.on('data', (chunk: any) => {
+        res.on('data', (chunk: IncomingMessage) => {
           resBody = chunk.toString();
         });
         res.on('end', () => {
@@ -29,17 +29,17 @@ class GraphQLRequest {
       req.on('error', (err: any) => {
         reject(err);
       });
-      req.write(postData);
+      req.write(reqData);
       req.end();
     });
   }
 
-  public async query(postData: string) {
-    return await this._request(postData);
+  public async query(reqData: string) {
+    return await this._request(reqData);
   }
 
-  public async mutation(postData: string) {
-    return await this._request(postData);
+  public async mutation(reqData: string) {
+    return await this._request(reqData);
   }
 }
 
