@@ -8,7 +8,7 @@ jobs:
     container: rethinkdb
 
     services:
-      localhost:
+      rethinkdb:
         image: rethinkdb
         ports:
           - "8080:8080"
