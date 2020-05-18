@@ -10,7 +10,8 @@ jobs:
     services:
       localhost:
         image: rethinkdb
-        ports: "8080:8080"
+        ports:
+          - "8080:8080"
 
     steps:
       - name: "Checkout"
