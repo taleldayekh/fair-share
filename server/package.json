@@ -6,7 +6,9 @@
   "license": "GPL-3.0-or-later",
   "main": "dist/api/server.js",
   "scripts": {
+    "build": "tsc",
     "serve:api": "tsc && node dist/api/server.js",
+    "serve:api:test": "TEST_DB=true node dist/api/server.js",
     "test": "jest",
     "style": "npm run prettier && npm run lint",
     "prettier": "prettier --write ./src/**/*.ts",

@@ -1,14 +1,14 @@
 import { r } from 'rethinkdb-ts';
 import { testData } from './test-data';
 
-const dbTables: string[] = Object.keys(testData);
+const dbTables = Object.keys(testData);
 
 type DBTable = 'users';
 
 export default async () => {
   await r.connectPool({
     db: 'testdb',
-    host: 'localhost',
+    host: 'rethinkdb',
     port: 28015,
   });
 

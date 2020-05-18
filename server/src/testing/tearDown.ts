@@ -3,5 +3,5 @@ import { r } from 'rethinkdb-ts';
 
 export default async () => {
   await r.dbDrop('testdb').run();
-  (await r.connectPool()).drain();
+  await r.getPoolMaster()!.drain();
 };
