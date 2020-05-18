@@ -1,3 +1,5 @@
+![CI](https://github.com/taleldayekh/fair-share/workflows/CI/badge.svg)
+
 ## Table of Contents
 
 - [Architecture](#architecture)
