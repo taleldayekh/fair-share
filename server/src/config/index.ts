@@ -3,8 +3,9 @@ import dotEnvParser from '../shared/dotEnvParser';
 dotEnvParser();
 
 export default {
-  serverPort: process.env.SERVER_PORT,
+  serverPort: Number(process.env.SERVER_PORT),
+  serverHost: process.env.SERVER_HOST,
   db: process.env.DB,
-  dbPort: process.env.DB_PORT,
+  dbPort: Number(process.env.DB_PORT),
   dbHost: process.env.DB_HOST,
 };
