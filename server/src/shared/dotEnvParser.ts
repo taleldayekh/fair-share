@@ -1,7 +1,8 @@
-import { join } from 'path';
+import { join, basename } from 'path';
 import { readdirSync, readFileSync } from 'fs';
 
 const baseDir = __dirname.split(/(?<=server\/)/)[0];
+const env = process.env.NODE_ENV;
 
 export default (): void => {
   const dotEnvFiles = readdirSync(baseDir)
@@ -22,8 +23,10 @@ export default (): void => {
   };
 
   dotEnvFiles.map((envFile) => {
-    const envFileContent = readFileSync(envFile, 'utf8');
-    const lines = envFileContent.split(/\n/);
-    _parseEnvVariables(lines);
+    if (basename(envFile) === `.env.${env}`) {
+      const envFileContent = readFileSync(envFile, 'utf8');
+      const lines = envFileContent.split(/\n/);
+      _parseEnvVariables(lines);
+    }
   });
 };
