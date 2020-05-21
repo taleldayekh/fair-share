@@ -1,5 +1,5 @@
 import { GraphQLRequest } from '../../utils';
-import { testData } from '../../../../testing/test-data';
+import { testData } from '../../../../shared/testing/test-data';
 
 describe('root queries', () => {
   const request = new GraphQLRequest();
