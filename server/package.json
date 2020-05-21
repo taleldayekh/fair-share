@@ -9,7 +9,7 @@
     "build": "tsc",
     "serve:api": "tsc && node dist/api/server.js",
     "serve:api:test": "TEST_DB=true NODE_ENV=development node dist/api/server.js",
-    "test": "jest",
+    "test": "jest && codecov",
     "style": "npm run prettier && npm run lint",
     "prettier": "prettier --write ./src/**/*.ts",
     "lint": "eslint ./src/**/*.ts"
