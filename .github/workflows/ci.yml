@@ -41,8 +41,8 @@ jobs:
           DB_PORT: 28015
           DB_HOST: rethinkdb
 
+      - name: curl
+        uses: wei/curl@master
+
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v1
-        run: |
-          apk add curl
-          apk add bash
