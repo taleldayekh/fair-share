@@ -1,18 +1,15 @@
 import { r } from 'rethinkdb-ts';
+import config from '../config';
 
-const DB_OPTIONS = {
-  db: process.env.TEST_DB ? 'testdb' : 'fairsharedb',
+const DB_CONFIG = {
+  db: !process.env.TEST_DB ? config.db : 'testdb',
+  port: config.dbPort,
+  host: config.dbHost,
 };
-// TODO: Environment variables for connect options and flags for dev, test and prod connections
-const CONNECT_OPTIONS = {
-  host: 'rethinkdb',
-  port: 28015,
-};
-const config = {
-  ...DB_OPTIONS,
-  ...CONNECT_OPTIONS,
+const connectOptions = {
+  ...DB_CONFIG,
 };
 
-r.connectPool(config);
+r.connectPool(connectOptions);
 
 export const db = r;

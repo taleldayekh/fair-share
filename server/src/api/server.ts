@@ -2,9 +2,10 @@ import { createServer, Server, IncomingMessage, ServerResponse } from 'http';
 import { graphql, buildSchema } from 'graphql';
 import { Root } from './types/Root';
 import schema from './schema';
+import config from '../config';
 
 // TODO: Store port in environment variable
-const port: number = 666;
+const port = config.serverPort;
 const server: Server = createServer().listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

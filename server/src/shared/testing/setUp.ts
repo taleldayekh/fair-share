@@ -1,4 +1,5 @@
 import { r } from 'rethinkdb-ts';
+import config from '../../config';
 import { testData } from './test-data';
 
 const dbTables = Object.keys(testData);
@@ -8,8 +9,8 @@ type DBTable = 'users';
 export default async () => {
   await r.connectPool({
     db: 'testdb',
-    host: 'rethinkdb',
-    port: 28015,
+    port: config.dbPort,
+    host: config.dbHost,
   });
 
   // Creates test database and seeds it with test data

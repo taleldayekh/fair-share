@@ -35,3 +35,8 @@ jobs:
           npm run build
           npm run serve:api:test &
           npm run test
+        env:
+          SERVER_PORT: 666
+          SERVER_HOST: localhost
+          DB_PORT: 28015
+          DB_HOST: rethinkdb
