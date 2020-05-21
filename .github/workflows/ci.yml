@@ -40,3 +40,6 @@ jobs:
           SERVER_HOST: localhost
           DB_PORT: 28015
           DB_HOST: rethinkdb
+
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v1
