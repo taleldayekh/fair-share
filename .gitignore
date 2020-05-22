@@ -4,6 +4,9 @@
 # Build
 dist/
 
+# Coverage
+coverage/
+
 # Node
 node_modules
 
