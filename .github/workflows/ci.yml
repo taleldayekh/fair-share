@@ -3,7 +3,7 @@ name: CI
 on: pull_request
 
 jobs:
-  CI:
+  Test:
     runs-on: ubuntu-latest
     container: rethinkdb
 
@@ -14,8 +14,14 @@ jobs:
           - "8080:8080"
           - "28015:28015"
 
+    env:
+      SERVER_PORT: 666
+      SERVER_HOST: localhost
+      DB_PORT: 28015
+      DB_HOST: rethinkdb
+
     steps:
-      - name: "Checkout"
+      - name: "Checkout code"
         uses: actions/checkout@v2
 
       - name: "Setup Node.js"
@@ -23,20 +29,19 @@ jobs:
         with:
           node-version: 12.x
 
-      - name: "Install server dependencies"
+      - name: "Install dependencies and build"
         run: |
+          apt-get update
+          apt-get install curl
           cd server
           npm install
+          npm run build
 
-      - name: "Run tests"
+      - name: "Test server"
         run: |
           cd server
-          npm ci
-          npm run build
           npm run serve:api:test &
           npm run test
-        env:
-          SERVER_PORT: 666
-          SERVER_HOST: localhost
-          DB_PORT: 28015
-          DB_HOST: rethinkdb
+
+      - name: "Upload coverage"
+        uses: codecov/codecov-action@v1

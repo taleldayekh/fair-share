@@ -6,8 +6,10 @@ const env = process.env.NODE_ENV;
 
 export default (): void => {
   const dotEnvFiles = readdirSync(baseDir)
-    .filter((dotEnvFile) => dotEnvFile.match(/.env.*/))
+    .filter((dotEnvFile) => dotEnvFile.match(/^.env.*/))
     .map((dotEnvFile) => join(baseDir, dotEnvFile));
+
+  if (!dotEnvFiles.length) return;
 
   const _parseEnvVariables = (lines: string[]): void => {
     lines.forEach((line) => {

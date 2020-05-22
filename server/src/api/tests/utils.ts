@@ -1,24 +1,18 @@
-import http, { IncomingMessage } from 'http';
+import http, { ServerResponse, IncomingMessage } from 'http';
+
+const options = {
+  port: 666,
+  host: 'localhost',
+  path: '/api',
+  method: 'POST',
+};
 
 class GraphQLRequest {
-  private _request(reqData: string) {
-    const options = {
-      // TODO: Replace hard coded values with environment variables
-      hostname: 'localhost',
-      port: 666,
-      path: '/api',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
+  private _request(reqData: string): Promise<ServerResponse> {
     return new Promise((resolve, reject) => {
-      // TODO: Replace any types
       const req = http.request(options, (res: IncomingMessage) => {
-        let resBody = '';
-
-        res.on('data', (chunk: IncomingMessage) => {
+        let resBody: string;
+        res.on('data', (chunk) => {
           resBody = chunk.toString();
         });
         res.on('end', () => {
@@ -26,7 +20,7 @@ class GraphQLRequest {
         });
       });
 
-      req.on('error', (err: any) => {
+      req.on('error', (err) => {
         reject(err);
       });
       req.write(reqData);

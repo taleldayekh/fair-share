@@ -4,4 +4,6 @@ module.exports = {
   testMatch: ['<rootDir>/src/**/*.spec.ts'],
   globalSetup: '<rootDir>/src/shared/testing/setUp.ts',
   globalTeardown: '<rootDir>/src/shared/testing/tearDown.ts',
+  collectCoverage: true,
+  coverageDirectory: './coverage/',
 };
