@@ -32,12 +32,12 @@ jobs:
         run: |
           cd server
           npm install
+          npm run build
 
       - name: "Run tests"
         run: |
           cd server
           npm ci
-          npm run build
           npm run serve:api:test &
           npm run test
         env:
