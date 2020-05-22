@@ -18,6 +18,11 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
 
+      - name: "Add curl"
+        run: |
+          apt-get install curl
+          apt-get install bash
+
       - name: "Setup Node.js"
         uses: actions/setup-node@v1
         with:
@@ -40,12 +45,6 @@ jobs:
           SERVER_HOST: localhost
           DB_PORT: 28015
           DB_HOST: rethinkdb
-
-      - name: "Add curl"
-        run: |
-          sudo apt update
-          sudo apt upgrade
-          sudo apt install curl
 
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v1
