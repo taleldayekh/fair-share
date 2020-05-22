@@ -22,7 +22,6 @@ jobs:
         run: |
           apt-get update
           apt-get install curl
-          apt-get install bash
 
       - name: "Setup Node.js"
         uses: actions/setup-node@v1
