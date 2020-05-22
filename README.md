@@ -1,4 +1,4 @@
-![CI](https://github.com/taleldayekh/fair-share/workflows/CI/badge.svg)
+![CI](https://github.com/taleldayekh/fair-share/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/taleldayekh/fair-share/branch/master/graph/badge.svg)](https://codecov.io/gh/taleldayekh/fair-share)
 
 ## Table of Contents
 
