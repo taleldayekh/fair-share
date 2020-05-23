@@ -11,4 +11,33 @@ const getUserByEmail = async (email: string): Promise<IDBUser> => {
   return (await db.table('users').filter({ email: email }).run())[0];
 };
 
-export { GetUserArgs, getUserByEmail };
+type NewUserFromEmail = {
+  name: string;
+  email: string;
+};
+
+type CreateUserArgs = NewUserFromEmail;
+
+const createUser = async (name: string, email: string): Promise<IDBUser> => {
+  return (
+    await db
+      .table('users')
+      .filter({ email: email })
+      .count()
+      .do((user: any) => {
+        return db.branch(
+          user.eq(0),
+          db
+            .table('users')
+            .insert({ name: name, email: email })
+            .do(() => {
+              return db.table('users').filter({ email: email });
+            }),
+          [],
+        );
+      })
+      .run()
+  )[0];
+};
+
+export { GetUserArgs, getUserByEmail, CreateUserArgs, createUser };
