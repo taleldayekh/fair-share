@@ -19,4 +19,20 @@ describe('root queries', () => {
 
     expect(res).toMatchObject({ data: { userByEmail: userTalel } });
   });
+
+  test('cannot get user by nonexistent email', async () => {
+    const query = `
+      query {
+        userByEmail(email: "nonexistent@talel.se") {
+          id
+          name
+          email
+        }
+      }
+    `;
+    const res = await request.query(query);
+    const errorMessage = Object.values(res)[0][0].message;
+
+    expect(errorMessage).toEqual('User does not exist');
+  });
 });

@@ -8,7 +8,7 @@ type GetUserByEmail = {
 
 type GetUserArgs = GetUserByEmail;
 
-const getUserByEmail = async (email: string): Promise<IDBUser> => {
+const getUserByEmail = async (email: string): Promise<IDBUser | undefined> => {
   return (await db.table('users').filter({ email: email }).run())[0];
 };
 
@@ -37,7 +37,7 @@ const createUser = async (
             .do(() => {
               return db.table('users').filter({ email: email });
             }),
-          undefined,
+          [],
         );
       })
       .run()
