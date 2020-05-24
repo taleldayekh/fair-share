@@ -19,7 +19,10 @@ type NewUserFromEmail = {
 
 type CreateUserArgs = NewUserFromEmail;
 
-const createUser = async (name: string, email: string): Promise<IDBUser> => {
+const createUser = async (
+  name: string,
+  email: string,
+): Promise<IDBUser | undefined> => {
   return (
     await db
       .table('users')
@@ -34,7 +37,7 @@ const createUser = async (name: string, email: string): Promise<IDBUser> => {
             .do(() => {
               return db.table('users').filter({ email: email });
             }),
-          [],
+          undefined,
         );
       })
       .run()
