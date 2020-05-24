@@ -1,6 +1,6 @@
-import * as userModels from '../../../../models/user';
-import { testData } from '../../../../shared/testing/test-data';
-import createUser from '../../../mutations/user/createUser';
+import * as userModels from '../../../../../models/user';
+import { testData } from '../../../../../shared/testing/test-data';
+import createUser from '../../../../mutations/user/createUser';
 
 describe('createUser resolver', () => {
   const mockedCreateUserModel = jest.spyOn(userModels, 'createUser');
@@ -9,7 +9,7 @@ describe('createUser resolver', () => {
     mockedCreateUserModel.mockRestore();
   });
 
-  test('createUser returns a newly created user', async () => {
+  test('createUser returns a new user', async () => {
     const userTalel = testData.users[0];
     mockedCreateUserModel.mockResolvedValue(userTalel);
     const newUser = await createUser('Talel Dayekh', 'mail@talel.se');
