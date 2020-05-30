@@ -9,12 +9,12 @@ export interface IDBSpendingGroup {
   name: string;
   ownerId: string;
   participants: ISpendingGroupParticipant[];
-  totalGroupSpending: boolean;
+  totalGroupSpending: number;
 }
 
 export interface ISpendingGroupParticipant {
   id: string;
   name: string;
   email: string;
-  totalParticipantSpending: boolean;
+  totalParticipantSpending: number;
 }
