@@ -6,15 +6,13 @@ export interface IDBUser {
 
 export interface IDBSpendingGroup {
   id: string;
-  name: string;
   ownerId: string;
-  participants: ISpendingGroupParticipant[];
-  totalGroupSpending: number;
+  name: string;
 }
 
-export interface ISpendingGroupParticipant {
+export interface IDBSpending {
   id: string;
-  name: string;
-  email: string;
-  totalParticipantSpending: number;
+  ownerId: string;
+  spendingGroupId: string;
+  amount: number;
 }
