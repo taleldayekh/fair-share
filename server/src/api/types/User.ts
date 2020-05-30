@@ -1,6 +1,6 @@
 import { IDBUser } from '../../interfaces/types';
 
-const UserType = `
+const UserType = /* GraphQL */ `
   type User {
     id: ID!
     name: String!

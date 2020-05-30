@@ -3,13 +3,13 @@ import { GetUserArgs, CreateUserArgs } from '../../models/user';
 import getUserByEmail from '../queries/user/getUserByEmail';
 import createUser from '../mutations/user/createUser';
 
-const RootQueryType = `
+const RootQueryType = /* GraphQL */ `
   type Query {
     userByEmail(email: String!): User
   }
 `;
 
-const RootMutationType = `
+const RootMutationType = /* GraphQL */ `
   type Mutation {
     createUser(name: String!, email: String!): User
   }
