@@ -1,4 +1,4 @@
-import { RootQueryType, RootMutationType } from './types/Root';
-import { UserType } from './types/User';
+import { RootQueryType, RootMutationType } from './type-defs/Root';
+import { UserType } from './type-defs/User';
 
 export default [RootQueryType, RootMutationType, UserType].join('\n\n');

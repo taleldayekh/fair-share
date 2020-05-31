@@ -1,21 +1,9 @@
-import { User } from '../types/User';
+import User from '../object-types/User';
 import { GetUserArgs, CreateUserArgs } from '../../models/user';
 import getUserByEmail from '../queries/user/getUserByEmail';
 import createUser from '../mutations/user/createUser';
 
-const RootQueryType = /* GraphQL */ `
-  type Query {
-    userByEmail(email: String!): User
-  }
-`;
-
-const RootMutationType = /* GraphQL */ `
-  type Mutation {
-    createUser(name: String!, email: String!): User
-  }
-`;
-
-class Root {
+export default class Root {
   // Queries
   async userByEmail(args: GetUserArgs): Promise<User> {
     return await getUserByEmail(args.email);
@@ -26,5 +14,3 @@ class Root {
     return await createUser(args.name, args.email);
   }
 }
-
-export { RootQueryType, RootMutationType, Root };

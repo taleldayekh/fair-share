@@ -1,14 +1,6 @@
 import { IDBUser } from '../../interfaces/types';
 
-const UserType = /* GraphQL */ `
-  type User {
-    id: ID!
-    name: String!
-    email: String!
-  }
-`;
-
-class User {
+export default class User {
   public id: string;
   public name: string;
   public email: string;
@@ -19,5 +11,3 @@ class User {
     this.email = dbUser.email;
   }
 }
-
-export { UserType, User };

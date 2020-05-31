@@ -1,4 +1,4 @@
-import { User } from '../../types/User';
+import User from '../../object-types/User';
 import { getUserByEmail } from '../../../models/user';
 
 export default async (email: string): Promise<User> => {
