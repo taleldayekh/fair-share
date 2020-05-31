@@ -10,6 +10,7 @@
   - [Folder Structure](#folder-structure)
   - [GraphQL Graph](#graphql-graph)
   - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#-problem)
+- [Data Storage](#data-storage)
 
 ## Architecture
 
@@ -49,7 +50,7 @@ The _*Persistence Layer*_ handles the persistence of data and is indirectly used
 _*Persistence Layer*_ components:
 
 - **Data Storage**  
-  [RethinkDB](https://rethinkdb.com/) NoSQL database.
+  [RethinkDB](https://rethinkdb.com/) NoSQL database. More details on the database design and choice can be found under data storage section.
 
 ## API
 
@@ -59,34 +60,44 @@ Pure [Node.js](https://nodejs.org/api/https.html) web server with an API based o
 
 ### Folder Structure
 
-```
+```sh
   api/
 1 ├── mutations
-2 ├── queries
-3 ├── tests
-4 ├── types
-5 ├── schema.ts
-6 ├── server.ts
+2 ├── object-types
+3 ├── queries
+4 ├── tests
+5 ├── type-defs
+6 ├── schema.ts
+7 ├── server.ts
 ```
 
 1. **mutations**  
-   A set of resolver functions which define how data for a field is created, updated or deleted.
+   A set of resolver functions organized by use case which defines how data for a field is created, updated or deleted.
 
-2. **queries**  
-   A set of resolver functions which define how data for a field is fetched.
+   > The mutation resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
 
-3. **tests**  
-   Integration tests for queries and mutations.
+2. **object-types**  
+   ES6 classes are used for implementing GraphQL types which return objects with complex behavior. Fields that accepts arguments are added as instance methods on the ES6 class, e.g. query and mutation resolvers. For fields where no arguments are needed we can instead use properties defined in the constructor.
 
-4. **types**  
-   The GraphQL schema divided into parts and specified using the GraphQL SDL (schema definition language) together with the type definitions that describe which fields can be queried and mutated and the relationship between them.
+3. **queries**  
+   A set of resolver functions organized by use case which defines how data for a field is fetched.
 
-5. **schema.ts**  
-   Generates one schema by combining all schema parts.
+   > The query resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
 
-6. **server.ts**  
-   Runs the server.
+4. **tests**  
+   Integration and unit tests.
+
+5. **type-defs**  
+   All the different types that make up our GraphQL schema. The schema is divided into parts and specified using GraphQL SDL (Schema Definition Language). Each field needs to have a corresponding resolver function with the same name that returns what we want.
+
+6. **schema.ts**  
+   Generates our schema by combining all schema parts in _*type-defs*_.
+
+7. **server.ts**  
+   Runs the API server.
 
 ### GraphQL Graph
 
 ### <img src='https://render.githubusercontent.com/render/math?math=\large n%2B1'> Problem
+
+## Data Storage
