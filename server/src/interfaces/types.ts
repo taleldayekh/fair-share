@@ -8,6 +8,7 @@ export interface IDBSpendingGroup {
   id: string;
   ownerId: string;
   name: string;
+  spending?: Spending;
 }
 
 export interface IDBSpending {
@@ -16,3 +17,5 @@ export interface IDBSpending {
   spendingGroupId: string;
   amount: number;
 }
+
+type Spending = IDBSpending[] | [];
