@@ -1,3 +1,1 @@
-import { IDBSpendingGroup } from '../../interfaces/types';
-
-export default class SpendingGroup {}
+import { IDBSpendingGroup, IDBSpending } from '../../interfaces/types';
