@@ -3,12 +3,12 @@ export const SpendingGroupType = /* GraphQL */ `
     id: ID!
     ownerId: String!
     name: String!
-    spending: Spending
+    spending: [Spending]
   }
 `;
 
 export const SpendingType = /* GraphQL */ `
-  type SpendingType {
+  type Spending {
     id: ID!
     ownerId: String!
     spendingGroupId: String!
