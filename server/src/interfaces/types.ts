@@ -18,4 +18,5 @@ export interface IDBSpending {
   amount: number;
 }
 
-type Spending = IDBSpending[] | [];
+// TODO: Delete this type
+type Spending = IDBSpending[];
