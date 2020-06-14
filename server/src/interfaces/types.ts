@@ -4,12 +4,16 @@ export interface IDBUser {
   email: string;
 }
 
+export interface IUser extends IDBUser {}
+
 export interface IDBSpendingGroup {
   id: string;
   ownerId: string;
   name: string;
-  spending?: Spending;
+  spending?: Spending[];
 }
+
+export interface ISpendingGroup extends IDBSpendingGroup {}
 
 export interface IDBSpending {
   id: string;
@@ -18,5 +22,6 @@ export interface IDBSpending {
   amount: number;
 }
 
-// TODO: Delete this type
-type Spending = IDBSpending[];
+export interface ISpending extends IDBSpending {}
+
+type Spending = IDBSpending;

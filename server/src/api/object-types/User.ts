@@ -1,13 +1,13 @@
-import { IDBUser } from '../../interfaces/types';
+import { IDBUser, IUser } from '../../interfaces/types';
 
-export default class User {
-  public id: string;
-  public name: string;
-  public email: string;
+export const user = (dbUser: IDBUser): IUser => {
+  const id = dbUser.id;
+  const name = dbUser.name;
+  const email = dbUser.email;
 
-  constructor(dbUser: IDBUser) {
-    this.id = dbUser.id;
-    this.name = dbUser.name;
-    this.email = dbUser.email;
-  }
-}
+  return {
+    id,
+    name,
+    email,
+  };
+};

@@ -1,25 +1,43 @@
-import User from '../object-types/User';
-import { SpendingGroup } from '../object-types/SpendingGroup';
+import getUserByEmail from '../queries/user/getUserByEmail';
+import newUser from '../mutations/user/createUser';
+import newSpendingGroup from '../mutations/spending-group/createSpendingGroup';
+import { user } from '../object-types/user';
+import { spendingGroup } from '../object-types/spendingGroup';
 import { GetUserArgs, CreateUserArgs } from '../../models/user';
 import { CreateSpendingGroupArgs } from '../../models/spendingGroup';
-import getUserByEmail from '../queries/user/getUserByEmail';
-import createUser from '../mutations/user/createUser';
-import createSpendingGroup from '../mutations/spending-group/createSpendingGroup';
+import { IUser } from '../../interfaces/types';
+import { ISpendingGroup } from '../../interfaces/types';
 
-export default class Root {
+export const root = () => {
   // Queries
-  async userByEmail(args: GetUserArgs): Promise<User> {
-    return await getUserByEmail(args.email);
-  }
+  const userByEmail = async (
+    args: GetUserArgs,
+    _: any,
+    __: any,
+  ): Promise<IUser> => {
+    return user(await getUserByEmail(args.email));
+  };
 
   // Mutations
-  async createUser(args: CreateUserArgs): Promise<User> {
-    return await createUser(args.name, args.email);
-  }
+  const createUser = async (
+    args: CreateUserArgs,
+    _: any,
+    __: any,
+  ): Promise<IUser> => {
+    return user(await newUser(args.name, args.email));
+  };
 
-  async createSpendingGroup(
+  const createSpendingGroup = async (
     args: CreateSpendingGroupArgs,
-  ): Promise<SpendingGroup> {
-    return await createSpendingGroup(args.userId, args.name);
-  }
-}
+    _: any,
+    __: any,
+  ): Promise<ISpendingGroup> => {
+    return spendingGroup(await newSpendingGroup(args.userId, args.name));
+  };
+
+  return {
+    userByEmail,
+    createUser,
+    createSpendingGroup,
+  };
+};

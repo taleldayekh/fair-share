@@ -1,29 +1,36 @@
-import { IDBSpendingGroup, IDBSpending } from '../../interfaces/types';
+import {
+  IDBSpendingGroup,
+  ISpendingGroup,
+  IDBSpending,
+  ISpending,
+} from '../../interfaces/types';
 
-export class SpendingGroup {
-  public id: string;
-  public ownerId: string;
-  public name: string;
-  public spending?: Spending[];
+export const spendingGroup = (
+  dbSpendingGroup: IDBSpendingGroup,
+): ISpendingGroup => {
+  const id = dbSpendingGroup.id;
+  const ownerId = dbSpendingGroup.ownerId;
+  const name = dbSpendingGroup.name;
+  const spending = dbSpendingGroup.spending;
 
-  constructor(dbSpendingGroup: IDBSpendingGroup) {
-    this.id = dbSpendingGroup.id;
-    this.ownerId = dbSpendingGroup.ownerId;
-    this.name = dbSpendingGroup.name;
-    this.spending = dbSpendingGroup.spending;
-  }
-}
+  return {
+    id,
+    ownerId,
+    name,
+    spending,
+  };
+};
 
-export class Spending {
-  public id: string;
-  public ownerId: string;
-  public spendingGroupId: string;
-  public amount: number;
+export const spending = (dbSpending: IDBSpending): ISpending => {
+  const id = dbSpending.id;
+  const ownerId = dbSpending.ownerId;
+  const spendingGroupId = dbSpending.spendingGroupId;
+  const amount = dbSpending.amount;
 
-  constructor(dbSpending: IDBSpending) {
-    this.id = dbSpending.id;
-    this.ownerId = dbSpending.ownerId;
-    this.spendingGroupId = dbSpending.spendingGroupId;
-    this.amount = dbSpending.amount;
-  }
-}
+  return {
+    id,
+    ownerId,
+    spendingGroupId,
+    amount,
+  };
+};
