@@ -15,7 +15,7 @@ const createSpendingGroup = async (
 ): Promise<IDBSpendingGroup> => {
   return await db
     .table('spending_groups')
-    .insert({ ownerId: userId, name: name })
+    .insert({ owner_id: userId, name: name })
     .do((res: RDatum) => {
       return db.table('spending_groups').get(res('generated_keys').nth(0));
     })
