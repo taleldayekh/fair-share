@@ -4,28 +4,31 @@
  */
 
 // Todo: Replace any type
-export default (dbField: any) => {};
-
-const dbSpendingGroup = {
-  id: '1',
-  owner_id: '2',
-  name: 'Groceries',
-  spendings_field: ['bla', 'bla', 'bla'],
+// Todo: Look up normalizing fields in nested objects
+export default (dbField: any) => {
+  return Object.entries(dbField);
 };
 
-let test = Object.entries(dbSpendingGroup)
-  .map((entry) => {
-    if (entry[0] === 'spendings_field') {
-      entry[0] = 'spendingsField';
-    }
-    return entry;
-  })
-  .reduce((newObj, key) => {
-    // @ts-ignore
-    return {
-      ...newObj,
-      [key[0]]: key[1],
-    };
-  }, {});
+// const dbSpendingGroup = {
+//   id: '1',
+//   owner_id: '2',
+//   name: 'Groceries',
+//   spendings_field: ['bla', 'bla', 'bla'],
+// };
 
-console.log(test);
+// let test = Object.entries(dbSpendingGroup)
+//   .map((entry) => {
+//     if (entry[0] === 'spendings_field') {
+//       entry[0] = 'spendingsField';
+//     }
+//     return entry;
+//   })
+//   .reduce((newObj, key) => {
+//     // @ts-ignore
+//     return {
+//       ...newObj,
+//       [key[0]]: key[1],
+//     };
+//   }, {});
+
+// console.log(test);
