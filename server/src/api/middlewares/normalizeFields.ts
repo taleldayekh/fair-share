@@ -1,39 +1,33 @@
-/*
- * Helper function for converting database
- * field names to resolver field names.
- */
+// @ts-ignore
+const dbFieldsNormalizer = (dbRow) => {
+  Object.keys(dbRow).map((key) => {
+    if (key.includes('_')) {
+      key = key.replace('_', '');
+    }
+    // console.log(key);
+    return key;
+  });
 
-// Todo: Proper typing
-const fieldsTest = (dbRows: {}) => {
-  return Object.entries(dbRows)
-    .map((dbRow) => {
-      if (dbRow[0].includes('_')) {
-        const regEx = /(?<=_).{1}/g;
-        const snakeCase = dbRow[0].match(regEx);
-
-        if (!snakeCase) return;
-
-        dbRow[0].replace('_', '');
-        dbRow[0].replace(regEx, () => snakeCase.shift()!.toUpperCase());
-      }
-      console.log(dbRow);
-      return dbRow;
-    })
-    .reduce((dbRows, dbRow) => {
-      // Todo: Check for undefined
-      return {
-        ...dbRows,
-        [dbRow![0]]: dbRow![1],
-      };
-    }, {});
+  Object.values(dbRow).map((value) => {
+    if (Array.isArray(value)) {
+      value.map((value) => {
+        if (typeof value === 'object') {
+          dbFieldsNormalizer(value);
+        }
+      });
+    }
+  });
 };
 
 const testFields = {
   id: '1',
   owner_id: '2',
-  name_ttalel_dayekh: 'Groceries',
-  spending_field: ['10', '100', '1000'],
+  name: 'Groceries',
+  spending_field: [
+    { id: 1, spending_amount: 100 },
+    { id: 2, spending_amount: 200 },
+  ],
 };
 
-const normalizedFields = fieldsTest(testFields);
-console.log(normalizedFields);
+const normalizeTestFields = dbFieldsNormalizer(testFields);
+console.log(normalizeTestFields);
