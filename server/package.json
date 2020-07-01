@@ -6,8 +6,9 @@
   "license": "GPL-3.0-or-later",
   "main": "dist/api/server.js",
   "scripts": {
+    "test:unit": "jest ./src/**/tests/unit/",
     "build": "tsc",
-    "serve:api": "tsc && node dist/api/server.js",
+    "serve:api": "NODE_ENV=development node dist/api/server.js",
     "serve:api:test": "TEST_DB=true NODE_ENV=development node dist/api/server.js",
     "test": "jest --coverage",
     "style": "npm run prettier && npm run lint",
@@ -16,8 +17,7 @@
   },
   "dependencies": {
     "graphql": "^15.0.0",
-    "rethinkdb-ts": "^2.4.2",
-    "rxjs": "^6.5.5"
+    "rethinkdb-ts": "^2.4.2"
   },
   "devDependencies": {
     "@types/jest": "^25.2.2",
@@ -26,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "eslint": "^6.8.0",
-    "jest": "^25.4.0",
+    "jest": "^26.0.1",
     "prettier": "2.0.2",
     "ts-jest": "^25.5.1",
     "typescript": "^3.8.3"

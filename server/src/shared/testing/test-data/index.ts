@@ -1,3 +1,4 @@
 import { users } from './users';
+import { spendingGroups } from './spendingGroups';
 
-export const testData = { users };
+export const testData = { users, spendingGroups };
