@@ -1,4 +1,4 @@
-import { normalizeFields } from '../utils/normalizeFields';
+import { normalizeFields } from '../../utils/normalizeFields';
 
 describe('normalizeFields', () => {
   const mixedFields = {

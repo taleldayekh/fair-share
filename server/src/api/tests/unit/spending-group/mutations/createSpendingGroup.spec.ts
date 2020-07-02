@@ -15,11 +15,11 @@ describe('createSpendingGroup resolver', () => {
   test('createSpendingGroup returns a new spending group', async () => {
     const groceriesSpendingGroup = testData.spendingGroups[0];
     mockedCreateSpendingGroupModel.mockResolvedValue(groceriesSpendingGroup);
-    const newSpendingGroup = await createSpendingGroup(
+    const spendingGroup = await createSpendingGroup(
       testData.users[0].id,
       'Groceries',
     );
 
-    expect(newSpendingGroup).toMatchObject(groceriesSpendingGroup);
+    expect(spendingGroup).toMatchObject(groceriesSpendingGroup);
   });
 });
