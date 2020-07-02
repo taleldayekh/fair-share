@@ -3,7 +3,6 @@ import { graphql, buildSchema } from 'graphql';
 import schema from './schema';
 import { root } from './object-types/root';
 import config from '../config';
-const snakeCase = require('lodash.snakecase');
 
 // @ts-ignore
 const testMiddleware = (res, req, next) => {
