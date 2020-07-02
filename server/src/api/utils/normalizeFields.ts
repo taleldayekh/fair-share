@@ -3,7 +3,8 @@
  * field names to resolver field names.
  */
 
-export const normalizeFields = (dbFields: {} | []): {} => {
+// TODO: Proper types
+export const normalizeFields = (dbFields: any): any => {
   const normalizedFields =
     dbFields instanceof Array
       ? Object.values(dbFields).map((dbField) => {

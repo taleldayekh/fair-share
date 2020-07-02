@@ -1,4 +1,5 @@
 import { createUser } from '../../../models/user';
+import { normalizeFields } from '../../utils/normalizeFields'
 import { IDBUser } from '../../../interfaces/types';
 
 export default async (name: string, email: string): Promise<IDBUser> => {
@@ -6,5 +7,5 @@ export default async (name: string, email: string): Promise<IDBUser> => {
 
   if (!user) throw new Error(`User with email ${email} already exists`);
 
-  return user;
+  return normalizeFields(user);
 };
