@@ -12,6 +12,7 @@ export const SpendingType = /* GraphQL */ `
     id: ID!
     ownerId: String!
     spendingGroupId: String!
+    label: String!
     amount: Float
   }
 `;

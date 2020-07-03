@@ -19,6 +19,7 @@ export interface IDBSpending {
   id: string;
   ownerId: string;
   spendingGroupId: string;
+  label: string;
   amount: number;
 }
 

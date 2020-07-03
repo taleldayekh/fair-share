@@ -25,12 +25,14 @@ export const spending = (dbSpending: IDBSpending): ISpending => {
   const id = dbSpending.id;
   const ownerId = dbSpending.ownerId;
   const spendingGroupId = dbSpending.spendingGroupId;
+  const label = dbSpending.label;
   const amount = dbSpending.amount;
 
   return {
     id,
     ownerId,
     spendingGroupId,
+    label,
     amount,
   };
 };

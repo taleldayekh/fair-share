@@ -1,5 +1,5 @@
 import { db } from '../db';
-import { IDBSpendingGroup } from '../interfaces/types';
+import { IDBSpendingGroup, IDBSpending } from '../interfaces/types';
 import { RDatum } from 'rethinkdb-ts';
 
 type NewSpendingGroup = {
@@ -22,4 +22,25 @@ const createSpendingGroup = async (
     .run();
 };
 
-export { CreateSpendingGroupArgs, createSpendingGroup };
+type NewSpending = {
+  userId: string;
+  spendingGroupId: string;
+  label: string;
+  amount: number;
+};
+
+type NewSpendingArgs = NewSpending;
+
+const newSpending = async (
+  userId: string,
+  spendingGroupId: string,
+  label: string,
+  amount: number,
+): Promise<IDBSpending> => {};
+
+export {
+  CreateSpendingGroupArgs,
+  createSpendingGroup,
+  NewSpendingArgs,
+  newSpending,
+};
