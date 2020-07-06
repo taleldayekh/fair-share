@@ -33,7 +33,7 @@ const createUser = async (
           user.eq(0),
           db
             .table('users')
-            .insert({ name: name, email: email })
+            .insert({ name, email })
             .do(() => {
               return db.table('users').filter({ email: email });
             }),
