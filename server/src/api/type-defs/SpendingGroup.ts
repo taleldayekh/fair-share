@@ -6,13 +6,3 @@ export const SpendingGroupType = /* GraphQL */ `
     spending: [Spending]
   }
 `;
-
-export const SpendingType = /* GraphQL */ `
-  type Spending {
-    id: ID!
-    ownerId: String!
-    spendingGroupId: String!
-    label: String!
-    amount: Float
-  }
-`;
