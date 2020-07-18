@@ -5,6 +5,6 @@ module.exports = {
   globalSetup: '<rootDir>/src/shared/testing/setUp.ts',
   globalTeardown: '<rootDir>/src/shared/testing/tearDown.ts',
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.ts'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/api/type-defs/*.ts'],
   coverageDirectory: './coverage/',
 };
