@@ -18,7 +18,41 @@ const normalizeResolverFieldNames = (data: DBData): DBData => {
           if (typeof value !== 'object') return value;
           return normalizeResolverFieldNames(value);
         })
-      : false;
+      : Object.entries(data)
+          .map((snakeCaseFields) => {
+            if (snakeCaseFields[0].includes('_')) {
+              const snakeCaseLettersRegEx = /(?<=_).{1}/g;
+              const snakeCaseLetters = snakeCaseFields[0].match(
+                snakeCaseLettersRegEx,
+              );
+              const camelCaseFields = snakeCaseFields[0]
+                .replace(snakeCaseLettersRegEx, () => {
+                  snakeCaseLetters!.shift()!.toUpperCase();
+                })
+                .replace(/_/g, '');
+
+              snakeCaseFields[0] = camelCaseFields;
+            }
+
+            if (
+              snakeCaseFields[1] instanceof Array ||
+              typeof snakeCaseFields[1] === 'object'
+            ) {
+              snakeCaseFields[1] = normalizeResolverFieldNames(
+                snakeCaseFields[1],
+              );
+            }
+
+            return snakeCaseFields;
+          })
+          .reduce((normalizedResolverFieldNames, camelCaseFields) => {
+            return {
+              ...normalizedResolverFieldNames,
+              [camelCaseFields[0]]: camelCaseFields[1],
+            };
+          }, {});
+
+  return normalizedResolverFieldNames;
 };
 
 const normalizeDBFieldNames = (data: TestData): TestData => {
