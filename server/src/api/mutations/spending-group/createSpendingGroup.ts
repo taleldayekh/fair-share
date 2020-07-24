@@ -1,5 +1,5 @@
 import { createSpendingGroup } from '../../../models/spendingGroup';
-import { normalizeFields } from '../../utils/normalizeFields';
+import { normalizeResolverFieldNames } from '../../../shared/utils/normalizeFields';
 import { IDBSpendingGroup } from '../../../interfaces/types';
 
 export default async (
@@ -7,5 +7,5 @@ export default async (
   name: string,
 ): Promise<IDBSpendingGroup> => {
   const spendingGroup = await createSpendingGroup(userId, name);
-  return normalizeFields(spendingGroup)
+  return normalizeResolverFieldNames(spendingGroup)
 };

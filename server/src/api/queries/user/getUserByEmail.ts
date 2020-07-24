@@ -1,5 +1,5 @@
 import { getUserByEmail } from '../../../models/user';
-import { normalizeFields } from '../../utils/normalizeFields'
+import { normalizeResolverFieldNames } from '../../../shared/utils/normalizeFields'
 import { IDBUser } from '../../../interfaces/types';
 
 export default async (email: string): Promise<IDBUser> => {
@@ -7,5 +7,5 @@ export default async (email: string): Promise<IDBUser> => {
 
   if (!user) throw new Error('User does not exist');
 
-  return normalizeFields(user);
+  return normalizeResolverFieldNames(user);
 };
