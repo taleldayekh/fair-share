@@ -7,10 +7,8 @@
       - [Data Access Layer](#data-access-layer)
       - [Persistence Layer](#persistence-layer)
 - [API](#api)
-  - [Folder Structure](#folder-structure)
-  - [GraphQL Graph](#graphql-graph)
-  - [<img src='https://render.githubusercontent.com/render/math?math=n%2B1'> Problem](#-problem)
-- [Data Storage](#data-storage)
+  - [GraphQL](#graphql)
+  - [GraphQL Server Folder Structure](#graphql-server-folder-structure)
 
 ## Architectures
 
@@ -60,7 +58,15 @@ Both the GraphQL engine and the web server has been implemented with a minimal d
 
 While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are academic.
 
-The lessons learned and skills gained as a whole are more important than the outcome of this project as a product. Even though it is impossible to understand everything a balance can be found while pushing to understand the system. Such thing as a simple web server, for instance, should be fairly easy to write and not require too many lines of code.
+The lessons learned and skills gained as a whole are more important than the outcome of this project as a product. Even though it is impossible to understand everything, a balance can be found while pushing to understand the system. Such thing as a simple web server, for instance, should be fairly easy to write and not require too many lines of code.
+
+### GraphQL
+
+### GraphQL Server Folder Structure
+
+```
+Folder structure goes here...
+```
 
 
 
@@ -115,11 +121,3 @@ A brief overview of the directories which make up the applications GraphQL API c
 
 1. **server.ts**  
    Runs the API server.
-
-### GraphQL Graph
-
-### <img src='https://render.githubusercontent.com/render/math?math=\large n%2B1'> Problem
-
-## Data Storage
-
-One-to-many relationships.
