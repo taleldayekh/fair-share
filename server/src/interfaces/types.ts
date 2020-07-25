@@ -17,8 +17,9 @@ export interface ISpendingGroup extends IDBSpendingGroup {}
 
 export interface IDBSpending {
   id: string;
-  ownerId: string;
+  userId: string;
   spendingGroupId: string;
+  label: string;
   amount: number;
 }
 

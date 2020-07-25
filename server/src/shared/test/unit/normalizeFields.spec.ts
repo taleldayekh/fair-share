@@ -1,6 +1,6 @@
-import { normalizeFields } from '../../utils/normalizeFields';
+import { normalizeResolverFieldNames } from '../../../shared/utils/normalizeFields';
 
-describe('normalizeFields', () => {
+describe('normalizeResolverFieldNames', () => {
   const mixedFields = {
     owner_id: '1',
     name: 'Spending Group',
@@ -16,7 +16,7 @@ describe('normalizeFields', () => {
   };
 
   test('normalizes fields', () => {
-    const normalizedFields = normalizeFields(mixedFields);
+    const normalizedFields = normalizeResolverFieldNames(mixedFields);
     expect(normalizedFields).toEqual({
       ownerId: '1',
       name: 'Spending Group',
