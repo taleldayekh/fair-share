@@ -12,7 +12,7 @@
     "serve:api:test": "TEST_DB=true NODE_ENV=development node dist/api/server.js",
     "test": "jest --coverage",
     "style": "npm run prettier && npm run lint",
-    "prettier": "prettier --write ./src/**/*.ts",
+    "prettier": "prettier --write ./src/**/**/*.ts",
     "lint": "eslint ./src/**/*.ts"
   },
   "dependencies": {
