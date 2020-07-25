@@ -1,6 +1,6 @@
-import { createUser } from '../../../models/user';
-import { normalizeResolverFieldNames } from '../../../shared/utils/normalizeFields'
-import { IDBUser } from '../../../interfaces/types';
+import { createUser } from '../../../../models/user';
+import { normalizeResolverFieldNames } from '../../../../shared/utils/normalizeFields';
+import { IDBUser } from '../../../../interfaces/types';
 
 export default async (name: string, email: string): Promise<IDBUser> => {
   const user = await createUser(name, email);

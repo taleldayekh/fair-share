@@ -1,6 +1,6 @@
-import { newSpending } from '../../../models/spending';
-import { normalizeResolverFieldNames } from '../../../shared/utils/normalizeFields';
-import { IDBSpending } from '../../../interfaces/types';
+import { newSpending } from '../../../../models/spending';
+import { normalizeResolverFieldNames } from '../../../../shared/utils/normalizeFields';
+import { IDBSpending } from '../../../../interfaces/types';
 
 export default async (
   userId: string,

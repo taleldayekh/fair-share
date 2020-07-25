@@ -1,6 +1,6 @@
 import * as userModels from '../../../../../models/user';
 import { testData } from '../../../../../shared/testing/test-data';
-import createUser from '../../../../mutations/user/createUser';
+import createUser from '../../../../user/use-cases/mutations/createUser'
 
 describe('createUser resolver', () => {
   const mockedCreateUserModel = jest.spyOn(userModels, 'createUser');

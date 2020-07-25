@@ -1,17 +1,14 @@
-// // import { IDBSpending } from '../../interfaces/types'
 /*
  * Helper functions for converting database field
  * names to resolver field names and vice versa.
  */
 
-// // interface DBData extends IDBSpending {}
-
-interface TestData {
-  [key: string]: any[];
+interface Data {
+  [key: string]: any;
 }
 
 // TODO: Proper types
-const normalizeResolverFieldNames = (data: any): any => {
+const normalizeResolverFieldNames = (data: Data): any => {
   const normalizedResolverFieldNames =
     data instanceof Array
       ? Object.values(data).map((value) => {
@@ -55,7 +52,7 @@ const normalizeResolverFieldNames = (data: any): any => {
   return normalizedResolverFieldNames;
 };
 
-const normalizeDBFieldNames = (data: TestData): TestData => {
+const normalizeDBFieldNames = (data: Data): any => {
   const normalizedDBFieldNames = Object.entries(data)
     .map((camelCaseFields) => {
       const upperCaseLettersRegEx = /[^a-z0-9]/g;

@@ -1,7 +1,7 @@
 import { httpsServer } from '../server';
 import { graphql, buildSchema } from 'graphql';
 import schema from './schema';
-import { root } from './object-types/root';
+import { root } from './root';
 import config from '../config';
 
 // @ts-ignore
