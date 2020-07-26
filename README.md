@@ -53,11 +53,11 @@ _*Persistence Layer*_ components:
 
 The API is built on [GraphQL.js](https://graphql.org/graphql-js) and runs on a [Node.js](https://nodejs.org/api/https.html) web server.
 
-Both the GraphQL engine and the web server has been implemented with a minimal dependency on third party libraries. Often the pattern in similar projects is to run GraphQL over an [Express](https://expressjs.com) web server or to incorporate various parts of the [Apollo GraphQL](https://www.apollographql.com/docs/) tooling.
+Both the GraphQL engine and the web server have been implemented with a minimal dependency on third party libraries. A pattern that is often used in similar projects is to run GraphQL over an [Express](https://expressjs.com) web server or to incorporate various parts of the [Apollo GraphQL](https://www.apollographql.com/docs/) tooling.
 
 While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are academic.
 
-The lessons learned and skills gained as a whole are more important than the outcome of this project as a product. Even though it is impossible to understand everything, a balance can be found while pushing to understand the system. Such thing as a simple web server, for instance, should be fairly easy to write and not require too many lines of code.
+The lessons learned and skills gained are more important than the outcome of this project as a product. Even though it is impossible to understand everything one should push oneself to understand the systems at play. A bare-bones web server, for instance, is fairly easy to write and does not require too many lines of code.
 
 ### GraphQL Server Folder Structure
 
@@ -65,30 +65,29 @@ The lessons learned and skills gained as a whole are more important than the out
    └── api/
 1.     └── app-.../
 2.     ╵   └── use-cases/
-2.a    ╵   ╵   └── mutations/
-2.b    ╵   ╵   └── queries/
-3.     ╵   └── object-type.ts 
+2.a.   ╵   ╵   └── mutations/
+2.b.   ╵   ╵   └── queries/
+3.     ╵   └── domain-object-type.ts 
 4.     └── schema/
-5.     ╵   └── types/
-6.     ╵   └── index.ts
-7.     └── tests/
-8.     └── root.ts
-9.     └── server.ts
+4.a.   ╵   └── types/
+4.b.   ╵   └── index.ts
+5.     └── tests/
+6.     └── root.ts
+7.     └── server.ts
 ```
 
-1. **app-..**  
-   Each application domain is separated into an `app` prefixed directory, e.g. _*user*_, _*spending-group*_.
+1. **app...**  
+   Application domains separated into `app` prefixed modules, e.g. _*app-user*_, _*app-spending-group*_.
 
+2. **use-cases**  
+   Use case specific mutations and queries for a particular domain.
 
+	 - 2.a. **mutations**  
+	   A set of resolver functions which defines how data for a field is created, updated or deleted.
 
-
-
-
-
-
-
-
-
+	 - 2.b. **queries**  
+	   A set of resolver functions which defines how data for a field is fetched.
+	 
 
 
 
@@ -102,20 +101,9 @@ The lessons learned and skills gained as a whole are more important than the out
 
 <!-- ### Folder Structure
 
-app prefixed directories are the domains
 
 A brief overview of the directories which make up the applications GraphQL API core.
 
-```sh
-  api/
-1 ├── mutations
-2 ├── object-types
-3 ├── queries
-4 ├── tests
-5 ├── type-defs
-6 ├── schema.ts
-7 ├── server.ts
-```
 
 4. **tests**  
    The API test suite is separated into:
