@@ -7,7 +7,6 @@
       - [Data Access Layer](#data-access-layer)
       - [Persistence Layer](#persistence-layer)
 - [API](#api)
-  - [GraphQL](#graphql)
   - [GraphQL Server Folder Structure](#graphql-server-folder-structure)
 
 ## Architectures
@@ -60,13 +59,35 @@ While such libraries provide a rich ecosystem of pre-built modules which are wel
 
 The lessons learned and skills gained as a whole are more important than the outcome of this project as a product. Even though it is impossible to understand everything, a balance can be found while pushing to understand the system. Such thing as a simple web server, for instance, should be fairly easy to write and not require too many lines of code.
 
-### GraphQL
-
 ### GraphQL Server Folder Structure
 
 ```
-Folder structure goes here...
+   └── api/
+1.     └── app-.../
+2.     ╵   └── use-cases/
+2.a    ╵   ╵   └── mutations/
+2.b    ╵   ╵   └── queries/
+3.     ╵   └── object-type.ts 
+4.     └── schema/
+5.     ╵   └── types/
+6.     ╵   └── index.ts
+7.     └── tests/
+8.     └── root.ts
+9.     └── server.ts
 ```
+
+1. **app-..**  
+   Each application domain is separated into an `app` prefixed directory, e.g. _*user*_, _*spending-group*_.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -79,7 +100,9 @@ Folder structure goes here...
 
 <!-- ! CONTINUE FROM HERE ! -->
 
-### Folder Structure
+<!-- ### Folder Structure
+
+app prefixed directories are the domains
 
 A brief overview of the directories which make up the applications GraphQL API core.
 
@@ -120,4 +143,4 @@ A brief overview of the directories which make up the applications GraphQL API c
    Generates our GraphQL schema by combining all schema parts in the `type-defs` directory.
 
 1. **server.ts**  
-   Runs the API server.
+   Runs the API server. -->
