@@ -1,10 +1,10 @@
-import getUserByEmail from './user/use-cases/queries/getUserByEmail';
-import newUser from './user/use-cases/mutations/createUser';
-import newSpendingGroup from './spending-group/use-cases/mutations/createSpendingGroup';
-import addSpending from './spending/use-cases/mutations/newSpending';
-import { user } from './user/user';
-import { spendingGroup } from './spending-group/spendingGroup';
-import { spending } from './spending/spending';
+import getUserByEmail from './app-user/use-cases/queries/getUserByEmail';
+import newUser from './app-user/use-cases/mutations/createUser';
+import newSpendingGroup from './app-spending-group/use-cases/mutations/createSpendingGroup';
+import addSpending from './app-spending/use-cases/mutations/newSpending';
+import { user } from './app-user/user';
+import { spendingGroup } from './app-spending-group/spendingGroup';
+import { spending } from './app-spending/spending';
 import { GetUserArgs, CreateUserArgs } from '../models/user';
 import { CreateSpendingGroupArgs } from '../models/spendingGroup';
 import { SpendingArgs } from '../models/spending';
