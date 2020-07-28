@@ -67,7 +67,7 @@ The lessons learned and skills gained are more important than the outcome of thi
 2.     ╵   └── use-cases/
 2.a.   ╵   ╵   └── mutations/
 2.b.   ╵   ╵   └── queries/
-3.     ╵   └── domain-object-type.ts 
+3.     ╵   └── domainObjectType.ts 
 4.     └── schema/
 4.a.   ╵   └── types/
 4.b.   ╵   └── index.ts
@@ -87,6 +87,9 @@ The lessons learned and skills gained are more important than the outcome of thi
 
 	 - 2.b. **queries**  
 	   A set of resolver functions which defines how data for a field is fetched.
+
+3. **domainObjectType.ts**  
+   TXT
 	 
 
 
@@ -101,6 +104,9 @@ The lessons learned and skills gained are more important than the outcome of thi
 
 <!-- ### Folder Structure
 
+THe domain object types are named adter the module in which they lie in minus the app prefix, e.g. user, spendingGroup.
+
+Object types are factory functions used for implementing GraphQL types. They return
 
 A brief overview of the directories which make up the applications GraphQL API core.
 
