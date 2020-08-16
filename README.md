@@ -53,9 +53,9 @@ _*Persistence Layer*_ components:
 
 The API is built on [GraphQL.js](https://graphql.org/graphql-js) and runs on a [Node.js](https://nodejs.org/api/https.html) web server.
 
-Both the GraphQL engine and the web server have been implemented with a minimal dependency on third party libraries. A pattern that is often used in similar projects is to run GraphQL over an [Express](https://expressjs.com) web server or to incorporate various parts of the [Apollo GraphQL](https://www.apollographql.com/docs/) tooling.
+Both the GraphQL engine and the web server have been implemented with a minimal dependency on third party libraries. Usually, a pattern often used in similar projects is to run GraphQL over an [Express](https://expressjs.com) web server or to incorporate various parts of the [Apollo GraphQL](https://www.apollographql.com/docs/) tooling.
 
-While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are academic.
+While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are purely academic.
 
 The lessons learned and skills gained are more important than the outcome of this project as a product. Even though it is impossible to understand everything one should push oneself to understand the systems at play. A bare-bones web server, for instance, is fairly easy to write and does not require too many lines of code.
 
@@ -89,13 +89,17 @@ The lessons learned and skills gained are more important than the outcome of thi
 	   A set of resolver functions which defines how data for a field is fetched.
 
 3. **domainObjectType.ts**  
+   GraphQL type for a domain which returns an object with complex behavior implemented using factory functions.
+
+4. **schema**  
    TXT
+
+   - 4.a. **types**  
+     TXT
+
+   - 4.b. **index.ts**  
+     TXT
 	 
-
-
-
-
-
 
 
 
@@ -104,11 +108,6 @@ The lessons learned and skills gained are more important than the outcome of thi
 
 <!-- ### Folder Structure
 
-THe domain object types are named adter the module in which they lie in minus the app prefix, e.g. user, spendingGroup.
-
-Object types are factory functions used for implementing GraphQL types. They return
-
-A brief overview of the directories which make up the applications GraphQL API core.
 
 
 4. **tests**  
@@ -118,15 +117,11 @@ A brief overview of the directories which make up the applications GraphQL API c
    - Unit tests.
 
 1. **mutations**  
-   A set of resolver functions organized by use case which defines how data for a field is created, updated or deleted.
 
    > The mutation resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
 
-1. **object-types**  
-   ES6 classes that are used for implementing GraphQL types which return objects with complex behavior. Fields that accepts arguments are added as instance methods on the ES6 class, e.g. query and mutation resolvers. For fields where no arguments are needed we can instead use properties defined in the constructor.
 
 1. **queries**  
-   A set of resolver functions organized by use case which defines how data for a field is fetched.
 
    > The query resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
 
