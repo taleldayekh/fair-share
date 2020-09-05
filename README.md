@@ -99,6 +99,16 @@ The lessons learned and skills gained are more important than the outcome of thi
 
    - 4.b. **index.ts**  
      TXT
+
+5. **tests**  
+   TXT
+
+6. **root.ts**  
+   TXT
+
+7. **server.ts**  
+   Runs the API server by creating a web server
+
 	 
 
 
@@ -130,6 +140,3 @@ The lessons learned and skills gained are more important than the outcome of thi
 
 1. **schema.ts**  
    Generates our GraphQL schema by combining all schema parts in the `type-defs` directory.
-
-1. **server.ts**  
-   Runs the API server. -->
