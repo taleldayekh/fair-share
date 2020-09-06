@@ -6,5 +6,12 @@ export interface HTTP {
 }
 
 export interface Route {
-  [url: string]: (req: IncomingMessage, res: ServerResponse) => void;
+  [urlPath: string]: Handler;
 }
+
+export interface Router {
+  addRoute: (urlPath: string, handler: Handler) => void;
+  routes: () => any
+}
+
+export type Handler = (http: HTTP) => void;
