@@ -53,7 +53,7 @@ _*Persistence Layer*_ components:
 
 The API is built on [GraphQL.js](https://graphql.org/graphql-js) and runs on a [Node.js](https://nodejs.org/api/https.html) web server.
 
-Both the GraphQL engine and the web server have been implemented with a minimal dependency on third party libraries. Usually, a pattern often used in similar projects is to run GraphQL over an [Express](https://expressjs.com) web server or to incorporate various parts of the [Apollo GraphQL](https://www.apollographql.com/docs/) tooling.
+Both the GraphQL engine and the web server has been implemented with a minimal dependency on third party libraries. Usually, a pattern often used in similar projects is to run GraphQL over an [Express](https://expressjs.com) web server or to incorporate various parts of the [Apollo GraphQL](https://www.apollographql.com/docs/) tooling.
 
 While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are purely academic.
 

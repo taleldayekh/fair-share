@@ -8,7 +8,7 @@
   "scripts": {
     "test:unit": "jest ./src/**/tests/unit/",
     "build": "tsc",
-    "serve:api": "NODE_ENV=development node dist/api/server.js",
+    "serve:api": "NODE_ENV=development node dist/api/api-server.js",
     "serve:api:test": "TEST_DB=true NODE_ENV=development node dist/api/server.js",
     "test": "jest --coverage",
     "style": "npm run prettier && npm run lint",
