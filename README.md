@@ -110,9 +110,9 @@ The lessons learned and skills gained are more important than the outcome of thi
    Runs a web server which creates an request and response Rx observable stream.
 
    ```
-      ╭
-   ───│req/res│
-      ╰
+       ╭───────╮
+   ────│req/res│
+       ╰───────╯
    ```
 
 <!-- ! CONTINUE FROM HERE ! -->
