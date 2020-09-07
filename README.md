@@ -73,7 +73,7 @@ The lessons learned and skills gained are more important than the outcome of thi
 4.b.   ╵   └── index.ts
 5.     └── tests/
 6.     └── root.ts
-7.     └── server.ts
+7.     └── api-server.ts
 ```
 
 1. **app...**  
@@ -106,13 +106,18 @@ The lessons learned and skills gained are more important than the outcome of thi
 6. **root.ts**  
    TXT
 
-7. **server.ts**  
-   Runs a web server which creates an request and response Rx observable stream.
+7. **api-server.ts**  
+   Runs a web server which creates a request and response Rx observable stream.
 
    ```
        ╭───────╮            ╭───────╮    ╭───────╮    ╭───────╮        ╭───────╮
-   ────│req/res│────────────│req/res│────│req/res│────│req/res│────────│req/res│────>
+   ────│req/res│────────────│req/res│────│req/res│────│req/res│────────│req/res│────►
        ╰───────╯            ╰───────╯    ╰───────╯    ╰───────╯        ╰───────╯
+           │                     │             │            │                 │
+           │                     │             │            │                 │
+           │                     │             │            │                 │
+           │                     │             │            │                 │
+           ▼                     ▼             ▼            ▼                 ▼
    ```
 
 <!-- ! CONTINUE FROM HERE ! -->
