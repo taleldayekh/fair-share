@@ -1,8 +1,14 @@
-import { Observable, Observer } from 'rxjs';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { HTTP, Route } from '../interfaces/web-server.interface';
+import { Observable, Observer } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {
+  HTTP,
+  Router,
+  Route,
+  Handler,
+} from '../interfaces/web-server.interface';
 
-export const httpServerStream = (port: number): Observable<HTTP> => {
+export const createHTTPServerStream = (port: number): Observable<HTTP> => {
   return Observable.create((observer: Observer<HTTP>) => {
     createServer((req: IncomingMessage, res: ServerResponse) =>
       observer.next({ req, res }),
@@ -12,12 +18,39 @@ export const httpServerStream = (port: number): Observable<HTTP> => {
   });
 };
 
-export const router = () => {
-  const routes: Route[] = [];
+export const createRouter = (): Router => {
+  const routesStack: Route[] = [];
 
-  const addRoute = () => {};
+  const addRoute = (urlPath: string, handler: Handler): void => {
+    routesStack.push({
+      [urlPath]: handler,
+    });
+  };
+
+  const parseRoutes = (http: HTTP) => {
+    const { req, res } = http;
+    const matchedRoutes = routesStack.filter(
+      (route) => Object.keys(route)[0] === req.url,
+    );
+
+    if (matchedRoutes.length) {
+      matchedRoutes.forEach((route) => {
+        Object.values(route)[0](http);
+      });
+    } else {
+      res.statusCode = 404;
+      res.write('404 Not Found');
+      res.end();
+    }
+  };
+
+  const routes = () => {
+    return (observable: Observable<HTTP>) =>
+      observable.pipe(map((value: HTTP) => parseRoutes(value)));
+  };
 
   return {
     addRoute,
+    routes,
   };
 };
