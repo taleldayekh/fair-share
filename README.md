@@ -113,11 +113,11 @@ The lessons learned and skills gained are more important than the outcome of thi
        ╭───────╮            ╭───────╮    ╭───────╮    ╭───────╮        ╭───────╮
    ────│req/res│────────────│req/res│────│req/res│────│req/res│────────│req/res│────►
        ╰───────╯            ╰───────╯    ╰───────╯    ╰───────╯        ╰───────╯
-           │                     │             │            │                 │
-           │                     │             │            │                 │
-           │                     │             │            │                 │
-           │                     │             │            │                 │
-           ▼                     ▼             ▼            ▼                 ▼
+           │                    │             │            │                 │
+           │                    │             │            │                 │
+           │                    │             │            │                 │
+           │                    │             │            │                 │
+           ▼                    ▼             ▼            ▼                 ▼
    ```
 
 <!-- ! CONTINUE FROM HERE ! -->
