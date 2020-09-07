@@ -107,12 +107,13 @@ The lessons learned and skills gained are more important than the outcome of thi
    TXT
 
 7. **server.ts**  
-   Runs the API server by creating a web server
+   Runs a web server which creates an request and response Rx observable stream.
 
-	 
-
-
-
+   ```
+      ╭
+   ───│req/res│
+      ╰
+   ```
 
 <!-- ! CONTINUE FROM HERE ! -->
 
