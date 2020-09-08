@@ -21,32 +21,57 @@ export const createHTTPServerStream = (port: number): Observable<HTTP> => {
 export const createRouter = (): Router => {
   const routesStack: Route[] = [];
 
-  const addRoute = (urlPath: string, handler: Handler): void => {
+  const addRoute = (
+    method: string,
+    urlPath: string,
+    handler: Handler,
+  ): void => {
     routesStack.push({
-      [urlPath]: handler,
+      method,
+      urlPath,
+      handler,
     });
-  };
-
-  const parseRoutes = (http: HTTP) => {
-    const { req, res } = http;
-    const matchedRoutes = routesStack.filter(
-      (route) => Object.keys(route)[0] === req.url,
-    );
-
-    if (matchedRoutes.length) {
-      matchedRoutes.forEach((route) => {
-        Object.values(route)[0](http);
-      });
-    } else {
-      res.statusCode = 404;
-      res.write('404 Not Found');
-      res.end();
-    }
   };
 
   const routes = () => {
     return (observable: Observable<HTTP>) =>
-      observable.pipe(map((value: HTTP) => parseRoutes(value)));
+      observable.pipe(
+        map((value: HTTP) => parseRoutes(value)),
+        map((value: HTTP) => clientErrorResponse(value)),
+      );
+  };
+
+  const parseRoutes = (http: HTTP) => {
+    const { req } = http;
+    const matchedRoutes = routesStack.filter(
+      (route) => route.urlPath === req.url,
+    );
+
+    if (!matchedRoutes.length)
+      return { ...http, statusCode: 404, responseMessage: '404 Not Found' };
+
+    for (let i = 0; i < matchedRoutes.length; i++) {
+      if (matchedRoutes[i].method !== req.method)
+        return {
+          ...http,
+          statusCode: 405,
+          responseMessage: '405 Method Not Allowed',
+        };
+
+      matchedRoutes[i].handler(http);
+    }
+
+    return http;
+  };
+
+  const clientErrorResponse = (http: HTTP) => {
+    if (http.statusCode === undefined || http.responseMessage === undefined)
+      return http;
+
+    const { res } = http;
+
+    res.statusCode = http.statusCode;
+    res.end(http.responseMessage);
   };
 
   return {
