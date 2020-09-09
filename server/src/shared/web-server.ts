@@ -50,15 +50,15 @@ export const createRouter = (): Router => {
     if (!matchedRoutes.length)
       return { ...http, statusCode: 404, responseMessage: '404 Not Found' };
 
-    for (let i = 0; i < matchedRoutes.length; i++) {
-      if (matchedRoutes[i].method !== req.method)
+    for (const matchedRoute of matchedRoutes) {
+      if (matchedRoute.method !== req.method) {
         return {
           ...http,
           statusCode: 405,
           responseMessage: '405 Method Not Allowed',
         };
-
-      matchedRoutes[i].handler(http);
+      }
+      matchedRoute.handler(http);
     }
 
     return http;
