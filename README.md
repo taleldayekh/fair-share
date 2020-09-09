@@ -82,11 +82,11 @@ The lessons learned and skills gained are more important than the outcome of thi
 2. **use-cases**  
    Use case specific mutations and queries for a particular domain.
 
-	 - 2.a. **mutations**  
-	   A set of resolver functions which defines how data for a field is created, updated or deleted.
+	2.a. **mutations**  
+	     A set of resolver functions which defines how data for a field is created, updated or deleted.
 
-	 - 2.b. **queries**  
-	   A set of resolver functions which defines how data for a field is fetched.
+	2.b. **queries**  
+	     A set of resolver functions which defines how data for a field is fetched.
 
 3. **domainObjectType.ts**  
    GraphQL type for a domain which returns an object with complex behavior implemented using factory functions.
