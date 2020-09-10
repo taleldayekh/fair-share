@@ -10,11 +10,15 @@ import {
 
 export const createHTTPServerStream = (port: number): Observable<HTTP> => {
   return Observable.create((observer: Observer<HTTP>) => {
-    createServer((req: IncomingMessage, res: ServerResponse) =>
+    const server = createServer((req: IncomingMessage, res: ServerResponse) =>
       observer.next({ req, res }),
     ).listen(port, () => {
       console.log(`Server running on PORT ${port}`);
     });
+
+    return () => {
+      server.close();
+    };
   });
 };
 
