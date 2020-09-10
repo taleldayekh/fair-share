@@ -1,17 +1,21 @@
 import axios from 'axios';
-// import { map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { createHTTPServerStream } from '../../web-server';
-// import { testData } from '../../testing/test-data';
+import { HTTP } from '../../../interfaces/web-server.interface';
 
 describe('web server', () => {
-  // const helloWorldMiddleware = testData.helloWorldMiddleware;
+  const helloWorldMiddleware = (http: HTTP): void => {
+    const { res } = http;
+    res.end('Hello World');
+  };
 
-  test('server stream with basic middleware', async () => {
+  afterEach(() => {});
+
+  test('server stream works with basic middleware', async () => {
     const server$ = createHTTPServerStream(5000);
+    server$.pipe(map(helloWorldMiddleware)).subscribe();
 
-    server$.subscribe(value => console.log(value));
-
-    await axios.get('http://localhost:5000');
-    // console.log(res);
+    const res = await axios.get('http://localhost:5000');
+    expect(res.data).toEqual('Hello World');
   });
 });
