@@ -21,15 +21,15 @@ jobs:
       DB_HOST: rethinkdb
 
     steps:
-      - name: "checkout code"
+      - name: "Checkout code"
         uses: actions/checkout@v2
 
-      - name: "setup Node.js"
+      - name: "Setup Node.js"
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
 
-      - name: "install dependencies and build"
+      - name: "Install dependencies and build"
         run: |
           apt-get update
           apt-get install curl
@@ -37,7 +37,7 @@ jobs:
           npm install
           npm run build
 
-      - name: "run tests"
+      - name: "Run tests"
         run: |
           cd server
           npm run serve:api:test &
