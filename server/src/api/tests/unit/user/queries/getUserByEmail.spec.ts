@@ -1,6 +1,6 @@
 import * as userModels from '../../../../../models/user';
 import { testData } from '../../../../../shared/testing/test-data';
-import getUserByEmail from '../../../../user/use-cases/queries/getUserByEmail'
+import getUserByEmail from '../../../../app-user/use-cases/queries/getUserByEmail';
 
 describe('getUserByEmail resolver', () => {
   const mockedGetUserByEmailModel = jest.spyOn(userModels, 'getUserByEmail');
