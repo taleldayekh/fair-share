@@ -7,3 +7,7 @@
 // 			const newSpendingMutation = null
 // 		})
 // })
+
+test('Smoke test', () => {
+  console.log('Smoke test');
+});
