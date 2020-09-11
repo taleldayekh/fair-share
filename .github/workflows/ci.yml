@@ -50,7 +50,6 @@ jobs:
 
 
 
-jobs:
   second_jon:
     runs-on: ubuntu-latest
     container: rethinkdb
