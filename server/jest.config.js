@@ -8,5 +8,4 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.ts', '!src/api/type-defs/*.ts'],
   coverageDirectory: './coverage/',
   // coverageReporters: ['html']
-  overageReporters: ['html', 'lcov', 'text-summary'],
 };
