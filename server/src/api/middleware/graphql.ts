@@ -9,6 +9,8 @@ export const graphQLMiddleware = (
     const { req, res } = http;
     const body: Buffer[] = [];
 
+    // TODO: Add error
+
     req.on('data', (chunk: Buffer) => {
       body.push(chunk);
     });
