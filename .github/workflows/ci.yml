@@ -1,9 +1,9 @@
-name: CI
+name: ci
 
 on: pull_request
 
 jobs:
-  Test:
+  test_server:
     runs-on: ubuntu-latest
     container: rethinkdb
 
@@ -21,15 +21,15 @@ jobs:
       DB_HOST: rethinkdb
 
     steps:
-      - name: "Checkout code"
+      - name: "checkout code"
         uses: actions/checkout@v2
 
-      - name: "Setup Node.js"
+      - name: "setup Node.js"
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
 
-      - name: "Install dependencies and build"
+      - name: "install dependencies and build"
         run: |
           apt-get update
           apt-get install curl
@@ -37,7 +37,7 @@ jobs:
           npm install
           npm run build
 
-      - name: "Test server"
+      - name: "run tests"
         run: |
           cd server
           npm run serve:api:test &

@@ -6,11 +6,17 @@
   "license": "GPL-3.0-or-later",
   "main": "dist/api/server.js",
   "scripts": {
+    "test": "TEST_API=true jest --coverage",
     "test:unit": "jest ./src/**/tests/unit/",
+    "test:integration": "TEST_API=true jest ./src/**/tests/integration/",
+    "serve:api:test": "NODE_ENV=development TEST_DB=true node dist/api/api-server.js",
+
+
+
+
+
     "build": "tsc",
     "serve:api": "NODE_ENV=development node dist/api/api-server.js",
-    "serve:api:test": "TEST_DB=true NODE_ENV=development node dist/api/api-server.js",
-    "test": "jest --coverage",
     "style": "npm run prettier && npm run lint",
     "prettier": "prettier --write ./src/**/**/*.ts",
     "lint": "eslint ./src/**/*.ts"
