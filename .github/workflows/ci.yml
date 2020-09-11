@@ -37,16 +37,11 @@ jobs:
           npm install
           npm run build
 
-      - name: "Unit tests"
-        run: |
-          cd server
-          npm run test:unit
-
-      - name: "Integration tests"
+      - name: "Tests"
         run: |
           cd server
           npm run serve:api:test &
-          npm run test:integration
+          npm run test
 
       - name: "Upload coverage"
         uses: codecov/codecov-action@v1
