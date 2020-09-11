@@ -11,7 +11,7 @@ const dbTables = Object.keys(dbData);
  * a test suite runs with the TEST_API variable set to true.
  */
 export default async () => {
-  process.env.TEST_API && setUpTestDB();
+  process.env.TEST_API && await setUpTestDB();
 };
 
 const setUpTestDB = async () => {
