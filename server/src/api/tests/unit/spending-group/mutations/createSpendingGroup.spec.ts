@@ -1,6 +1,6 @@
 import * as spendingGroupModels from '../../../../../models/spendingGroup';
 import { testData } from '../../../../../shared/testing/test-data';
-import createSpendingGroup from '../../../../app-spending-group/use-cases/mutations/createSpendingGroup'
+import createSpendingGroup from '../../../../app-spending-group/use-cases/mutations/createSpendingGroup';
 
 describe('createSpendingGroup resolver', () => {
   const mockedCreateSpendingGroupModel = jest.spyOn(
