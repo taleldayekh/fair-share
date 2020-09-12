@@ -10,11 +10,11 @@ const dbTables = Object.keys(dbData);
  * Creates a test database and seeds it with test data when
  * a test suite runs with the TEST_API variable set to true.
  */
-export default async () => {
-  process.env.TEST_API && await setUpTestDB();
+export default async (): Promise<void> => {
+  process.env.TEST_API && (await setupTestDB());
 };
 
-const setUpTestDB = async () => {
+const setupTestDB = async () => {
   await r.connectPool({
     db: 'testdb',
     port: config.dbPort,

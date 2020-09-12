@@ -1,11 +1,14 @@
 import { r } from 'rethinkdb-ts';
-// import { testData } from './test-data';
 
-export default async () => {
-  process.env.TEST_API && await closeTestDB();
+/*
+ * Removes the test database and closes the connection that
+ * is established when the TEST_API variable is set to true.
+ */
+export default async (): Promise<void> => {
+  process.env.TEST_API && (await teardownTestDB());
 };
 
-const closeTestDB = async () => {
+const teardownTestDB = async () => {
   await r.dbDrop('testdb').run();
-  await r.getPoolMaster()!.drain();
+  await r.getPoolMaster()?.drain();
 };
