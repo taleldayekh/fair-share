@@ -10,6 +10,7 @@ import { CreateSpendingGroupArgs } from '../models/spendingGroup';
 import { SpendingArgs } from '../models/spending';
 import { IUser, ISpendingGroup, ISpending } from '../interfaces/types';
 
+/* istanbul ignore file */
 export const root = () => {
   // Queries
   const userByEmail = async (

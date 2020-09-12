@@ -1,6 +1,6 @@
 import { IDBSpending, ISpending } from '../../interfaces/types';
 
-/* istanbul ignore next */
+/* istanbul ignore file */
 export const spending = (dbSpending: IDBSpending): ISpending => {
   const id = dbSpending.id;
   const userId = dbSpending.userId;
