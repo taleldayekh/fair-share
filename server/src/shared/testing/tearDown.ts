@@ -10,5 +10,5 @@ export default async (): Promise<void> => {
 
 const teardownTestDB = async () => {
   await r.dbDrop('testdb').run();
-  await r.getPoolMaster()?.drain();
+  await r.getPoolMaster()!.drain();
 };
