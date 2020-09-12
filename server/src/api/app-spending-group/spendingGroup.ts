@@ -1,6 +1,6 @@
 import { IDBSpendingGroup, ISpendingGroup } from '../../interfaces/types';
 
-/* istanbul ignore next */
+/* istanbul ignore file */
 export const spendingGroup = (
   dbSpendingGroup: IDBSpendingGroup,
 ): ISpendingGroup => {
