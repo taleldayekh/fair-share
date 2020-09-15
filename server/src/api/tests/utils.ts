@@ -1,3 +1,18 @@
+import { AxiosRequestConfig } from 'axios';
+import { GRAPHQL_ENDPOINT } from './constants';
+
+const graphQLRequestConfig = (graphQLRequest: string): AxiosRequestConfig => {
+  return {
+    method: 'POST',
+    url: GRAPHQL_ENDPOINT,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: {query: graphQLRequest, variables: {userId: '1', name: 'Retreat'}},
+    
+  };
+};
+
 import http, { ServerResponse, IncomingMessage } from 'http';
 
 const options = {
@@ -6,6 +21,10 @@ const options = {
   path: '/api',
   method: 'POST',
 };
+
+
+
+
 
 class GraphQLRequest {
   private _request(reqData: string): Promise<ServerResponse> {
@@ -37,4 +56,4 @@ class GraphQLRequest {
   }
 }
 
-export { GraphQLRequest };
+export { GraphQLRequest, graphQLRequestConfig };
