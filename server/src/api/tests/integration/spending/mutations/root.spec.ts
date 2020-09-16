@@ -1,13 +1,47 @@
-// import { GraphQLRequest } from '../../../utils'
+import axios from 'axios';
+import { GRAPHQL_ENDPOINT } from '../../../constants';
+import {
+  SPENDING_GROUP_GROCERIES_ID,
+  TALEL_ID,
+} from '../../../../../shared/testing/test-data/constants';
 
-// describe('spending root mutations', () => {
-// 		const request = new GraphQLRequest()
+describe('spending root mutation', () => {
+  test('new spending', async () => {
+    const userId = TALEL_ID;
+    const spendingGroupId = SPENDING_GROUP_GROCERIES_ID;
+    const label = 'Lidl';
+    const amount = 39;
 
-// 		test('new spending', async () => {
-// 			const newSpendingMutation = null
-// 		})
-// })
+    const newSpendingMutation = /* GraphQL */ `
+      mutation {
+        newSpending(userId: ${userId}, spendingGroupId: ${spendingGroupId}, label: ${label}, amount: ${amount}) {
+          userId
+          spendingGroupId
+          label
+          amount
+        }
+      }
+    `;
 
-test('Smoke test', () => {
-  console.log('Smoke test');
+    // const res = await axios.post(GRAPHQL_ENDPOINT,
+    //   {query: JSON.stringify(newSpendingMutation)}
+    // );
+
+    // console.log(res.data);
+
+    const res = await axios({
+      // Of course the url should be where your actual GraphQL server is.
+      url: GRAPHQL_ENDPOINT,
+      method: 'post',
+      data: {
+        query: JSON.stringify(newSpendingMutation),
+      },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
+
+    console.log(res.data);
+  });
 });
