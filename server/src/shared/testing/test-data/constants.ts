@@ -1,8 +1,8 @@
-const DATE: number = 518306400000;
+const DATE = 518306400000;
 
 // Users
-const TALEL_ID: string = '1';
-const BIANCA_ID: string = '2';
+const TALEL_ID = '1';
+const BIANCA_ID = '2';
 
 // Spending groups
 const SPENDING_GROUP_GROCERIES_ID = '1';
