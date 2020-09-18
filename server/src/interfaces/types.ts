@@ -4,7 +4,7 @@ export interface IDBUser {
   email: string;
 }
 
-export interface IUser extends IDBUser {}
+export type IUser = IDBUser;
 
 export interface IDBSpendingGroup {
   id: string;
@@ -13,7 +13,7 @@ export interface IDBSpendingGroup {
   spending?: Spending[];
 }
 
-export interface ISpendingGroup extends IDBSpendingGroup {}
+export type ISpendingGroup = IDBSpendingGroup;
 
 export interface IDBSpending {
   id: string;
@@ -23,6 +23,6 @@ export interface IDBSpending {
   amount: number;
 }
 
-export interface ISpending extends IDBSpending {}
+export type ISpending = IDBSpending;
 
 type Spending = IDBSpending;
