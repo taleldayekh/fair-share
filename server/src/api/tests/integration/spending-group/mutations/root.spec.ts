@@ -1,21 +1,46 @@
-import { GraphQLRequest } from '../../../utils';
+import axios from 'axios';
+import { graphQLRequestConfig } from '../../../utils';
+// import { SPENDING_GROUPS } from '../../../constants';
+// import { TALEL_ID } from '../../../../../shared/testing/test-data/constants';
 
 describe('spending group root mutations', () => {
-  const request = new GraphQLRequest();
+  test('createSpendingGroup', async () => {
+    // const userId = TALEL_ID;
+    // const spendingGroup = SPENDING_GROUPS.retreat;
 
-  test('create spending group', async () => {
     const createSpendingGroupMutation = /* GraphQL */ `
-      mutation {
-        createSpendingGroup(userId: "1", name: "Retreat") {
+      mutation createSpendingGroup($userId: String!, $name: String!) {
+        createSpendingGroup(userId: $userId, name: $name) {
           ownerId
           name
         }
       }
     `;
-    const res = await request.mutation(createSpendingGroupMutation);
 
-    expect(res).toMatchObject({
-      data: { createSpendingGroup: { ownerId: '1', name: 'Retreat' } },
-    });
+    const res = await axios(graphQLRequestConfig(createSpendingGroupMutation));
+
+    console.log(res.data);
   });
 });
+
+
+
+
+
+
+
+
+
+
+// `mutation updateUserCity($id: Int!, $city: String!) {
+//   updateUserCity(userID: $id, city: $city){
+//     id
+//     name
+//     age
+//     city
+//     knowledge{
+//       language
+//       frameworks
+//     }
+//   }
+// }`,
