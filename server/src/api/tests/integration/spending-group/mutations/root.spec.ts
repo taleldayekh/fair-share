@@ -22,25 +22,3 @@ describe('spending group root mutations', () => {
     console.log(res.data);
   });
 });
-
-
-
-
-
-
-
-
-
-
-// `mutation updateUserCity($id: Int!, $city: String!) {
-//   updateUserCity(userID: $id, city: $city){
-//     id
-//     name
-//     age
-//     city
-//     knowledge{
-//       language
-//       frameworks
-//     }
-//   }
-// }`,
