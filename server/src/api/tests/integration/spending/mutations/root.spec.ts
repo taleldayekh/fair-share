@@ -30,7 +30,6 @@ describe('spending root mutation', () => {
     // console.log(res.data);
 
     const res = await axios({
-      // Of course the url should be where your actual GraphQL server is.
       url: GRAPHQL_ENDPOINT,
       method: 'post',
       data: {
