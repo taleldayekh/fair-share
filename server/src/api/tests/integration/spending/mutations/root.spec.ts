@@ -23,12 +23,6 @@ describe('spending root mutation', () => {
       }
     `;
 
-    // const res = await axios.post(GRAPHQL_ENDPOINT,
-    //   {query: JSON.stringify(newSpendingMutation)}
-    // );
-
-    // console.log(res.data);
-
     const res = await axios({
       url: GRAPHQL_ENDPOINT,
       method: 'post',
