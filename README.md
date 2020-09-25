@@ -121,30 +121,3 @@ The lessons learned and skills gained are more important than the outcome of thi
          ╰──────────╯            ╰──────────╯    ╰──────────╯        ╰──────────╯
            
    ```
-
-<!-- ! CONTINUE FROM HERE ! -->
-
-<!-- ### Folder Structure
-
-
-
-4. **tests**  
-   The API test suite is separated into:
-
-   - Integration tests where queries and mutations containing test data are made to a dedicated test database.
-   - Unit tests.
-
-1. **mutations**  
-
-   > The mutation resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
-
-
-1. **queries**  
-
-   > The query resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
-
-1. **type-defs**  
-   All the different types that make up our GraphQL schema. The schema is divided into parts and specified using GraphQL SDL (Schema Definition Language). Each field needs to have a corresponding resolver function with the same name that returns what we want.
-
-1. **schema.ts**  
-   Generates our GraphQL schema by combining all schema parts in the `type-defs` directory.
