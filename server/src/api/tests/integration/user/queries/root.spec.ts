@@ -1,38 +1,35 @@
-import { GraphQLRequest } from '../../../utils';
-import { testData } from '../../../../../shared/testing/test-data';
+import axios from 'axios';
+import { graphQLRequestConfig } from '../../../utils';
+
+// TODO: Pass arguments to the GraphQL request instead of using hardcoded values
+// https://graphql.org/graphql-js/passing-arguments/
 
 describe('user root queries', () => {
-  const request = new GraphQLRequest();
-
-  test('get user by email', async () => {
-    const getUserByEmailQuery = /* GraphQL */ `
+  test('can get user by email', async () => {
+    const userByEmailQuery = /* GraphQL */ `
       query {
         userByEmail(email: "mail@talel.se") {
-          id
           name
-          email
         }
       }
     `;
-    const userTalel = testData.users[0];
-    const res = await request.query(getUserByEmailQuery);
 
-    expect(res).toMatchObject({ data: { userByEmail: userTalel } });
+    const res = await axios(graphQLRequestConfig(userByEmailQuery));
+    expect(res.data).toMatchObject({
+      data: { userByEmail: { name: 'Talel Dayekh' } },
+    });
   });
 
   test('cannot get user by nonexistent email', async () => {
-    const getUserByEmailQuery = /* GraphQL */ `
+    const userByEmailQuery = /* GraphQL */ `
       query {
         userByEmail(email: "nonexistent@talel.se") {
-          id
           name
-          email
         }
       }
     `;
-    const res = await request.query(getUserByEmailQuery);
-    const errorMessage = Object.values(res)[0][0].message;
 
-    expect(errorMessage).toEqual('User does not exist');
+    const res = await axios(graphQLRequestConfig(userByEmailQuery));
+    expect(res.data.errors[0].message).toEqual('User does not exist');
   });
 });
