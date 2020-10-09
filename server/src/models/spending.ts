@@ -1,22 +1,13 @@
 import { db } from '../db';
-import { IDBSpending } from '../interfaces/types';
+import { DBSpending } from '../interfaces/models.interface';
 import { RDatum } from 'rethinkdb-ts';
-
-type NewSpending = {
-  userId: string;
-  spendingGroupId: string;
-  label: string;
-  amount: number;
-};
-
-type SpendingArgs = NewSpending;
 
 const newSpending = async (
   userId: string,
   spendingGroupId: string,
   label: string,
   amount: number,
-): Promise<IDBSpending> => {
+): Promise<DBSpending> => {
   return await db
     .table('spending')
     .insert({
@@ -31,4 +22,4 @@ const newSpending = async (
     .run();
 };
 
-export { SpendingArgs, newSpending };
+export { newSpending };

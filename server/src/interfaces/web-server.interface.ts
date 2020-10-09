@@ -1,4 +1,13 @@
 import { IncomingMessage, ServerResponse } from 'http';
+import { Observable } from 'rxjs';
+
+export type Handler = (http: HTTP) => void;
+
+type AddRoute = (method: string, urlPath: string, handle: Handler) => void;
+
+type Routes = () => (
+  observable: Observable<HTTP>,
+) => Observable<HTTP | undefined>;
 
 export interface HTTP {
   req: IncomingMessage;
@@ -14,8 +23,6 @@ export interface Route {
 }
 
 export interface Router {
-  addRoute: (method: string, urlPath: string, handler: Handler) => void;
-  routes: () => any;
+  addRoute: AddRoute;
+  routes: Routes;
 }
-
-export type Handler = (http: HTTP) => void;

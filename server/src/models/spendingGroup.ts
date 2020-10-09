@@ -1,18 +1,11 @@
 import { db } from '../db';
-import { IDBSpendingGroup } from '../interfaces/types';
+import { DBSpendingGroup } from '../interfaces/models.interface';
 import { RDatum } from 'rethinkdb-ts';
-
-type NewSpendingGroup = {
-  userId: string;
-  name: string;
-};
-
-type CreateSpendingGroupArgs = NewSpendingGroup;
 
 const createSpendingGroup = async (
   userId: string,
   name: string,
-): Promise<IDBSpendingGroup> => {
+): Promise<DBSpendingGroup> => {
   return await db
     .table('spending_groups')
     .insert({ owner_id: userId, name })
@@ -22,4 +15,4 @@ const createSpendingGroup = async (
     .run();
 };
 
-export { CreateSpendingGroupArgs, createSpendingGroup };
+export { createSpendingGroup };
