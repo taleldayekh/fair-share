@@ -16,6 +16,12 @@ type CreateSpendingGroupMutation = (
 
 type NewSpendingMutation = (args: NewSpendingArgs) => Promise<Spending>;
 
+type RootResolver =
+  | UserByEmailQuery
+  | CreateUserMutation
+  | CreateSpendingGroupMutation
+  | NewSpendingMutation;
+
 export interface GetUserArgs {
   email: string;
 }
@@ -38,8 +44,5 @@ export interface NewSpendingArgs {
 }
 
 export interface RootType {
-  userByEmail: UserByEmailQuery;
-  createUser: CreateUserMutation;
-  createSpendingGroup: CreateSpendingGroupMutation;
-  newSpending: NewSpendingMutation;
+  [key: string]: RootResolver;
 }

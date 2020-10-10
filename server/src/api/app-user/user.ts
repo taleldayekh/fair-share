@@ -1,7 +1,8 @@
-import { IDBUser, IUser } from '../../interfaces/types';
+import { DBUser } from '../../interfaces/models.interface';
+import { User } from '../../interfaces/api.interface';
 
 /* istanbul ignore file */
-export const user = (dbUser: IDBUser): IUser => {
+export const user = (dbUser: DBUser): User => {
   const id = dbUser.id;
   const name = dbUser.name;
   const email = dbUser.email;
