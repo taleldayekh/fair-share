@@ -57,7 +57,7 @@ Both the GraphQL engine and the web server have been implemented with a minimal 
 
 While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are purely academic.
 
-The lessons learned and skills gained are more important than the outcome of this project as a product. Even though it is impossible to understand everything one should push oneself to understand the systems at play. A bare-bones web server, for instance, is fairly easy to write and does not require too many lines of code.
+The lessons learned and skills gained are more important than the outcome of this project as a product. Even though it is impossible to understand everything one should push oneself to understand the systems at play. A bare-bones web server, for instance, should be fairly easy to write and does not require too many lines of code.
 
 ### GraphQL Server Folder Structure
 
