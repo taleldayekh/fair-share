@@ -9,7 +9,7 @@ import {
 } from '../interfaces/web-server.interface';
 
 export const createHTTPServerStream = (port: number): Observable<HTTP> => {
-  return Observable.create((observer: Observer<HTTP>) => {
+  return new Observable((observer: Observer<HTTP>) => {
     const server = createServer((req: IncomingMessage, res: ServerResponse) =>
       observer.next({ req, res }),
     ).listen(port, () => {
