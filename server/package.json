@@ -19,7 +19,7 @@
     "build": "tsc",
     "serve:api": "NODE_ENV=development node dist/api/api-server.js",
     "style": "npm run prettier && npm run lint",
-    "prettier": "prettier --write ./src/**/**/*.ts"
+    "prettier": "prettier --write ./src"
   },
   "dependencies": {
     "graphql": "^15.3.0",
