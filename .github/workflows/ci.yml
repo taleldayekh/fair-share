@@ -29,13 +29,12 @@ jobs:
         with:
           node-version: 12.x
 
-      - name: "Install dependencies and build"
+      - name: "Install dependencies"
         run: |
           apt-get update
           apt-get install curl
           cd server
           npm install
-          npm run build
 
       - name: "Run lint"
         run: |
