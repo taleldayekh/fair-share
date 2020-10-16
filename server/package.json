@@ -6,7 +6,7 @@
   "license": "GPL-3.0-or-later",
   "main": "dist/api/server.js",
   "scripts": {
-    "serve:api:test": "tsc && NODE_ENV=development TEST_DB=true node dist/api/api-server.js",
+    "serve:api:test": "NODE_ENV=development TEST_DB=true node dist/api/api-server.js",
     "test": "TEST_API=true jest --coverage",
     "test:unit": "jest ./src/**/tests/unit/",
     "test:integration": "TEST_API=true jest ./src/**/tests/integration/",
