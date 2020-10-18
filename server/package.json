@@ -12,11 +12,6 @@
     "test:integration": "TEST_API=true jest ./src/**/tests/integration/",
     "lint": "eslint .",
     "prettier": "prettier --write ./src",
-
-
-
-
-
     "build": "tsc",
     "serve:api": "NODE_ENV=development node dist/api/api-server.js"
   },
