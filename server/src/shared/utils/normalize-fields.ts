@@ -6,72 +6,71 @@ fields to resolver fields and vice versa.
 */
 
 const snakeCaseToCamelCase = (snakeCaseKey: string): string | void => {
-  const snakeCaseLettersRegEx = /(?<=_)[^_]{1}/;
+  const snakeCaseLettersRegEx = /(?<=_)[^_]{1}/g;
   const matchSnakeCaseLetters = snakeCaseKey.match(snakeCaseLettersRegEx);
 
+  if (!matchSnakeCaseLetters) return;
 
+  const camelCaseKey = snakeCaseKey
+    .replace(snakeCaseLettersRegEx, () => {
+      // eslint-disable-next-line
+      return matchSnakeCaseLetters!.shift()!.toUpperCase();
+    })
+    .replace(/_/g, '');
 
-
-
-  // !
-  // type ReplacerFn = () => string;
-  // type Replacer = string | ReplacerFn;
-  
-  // const replacer = (x: string[]): Replacer => x.shift()?.toUpperCase();
-
-  // if (typeof replacer === 'string') {
-  //   return snakeCaseKey.replace(snakeCaseLettersRegEx, replacer);
-  // }
-  // else {
-  //   return;
-  // }
-
-
-
-
-
-
-
-
-
-
-  if (matchSnakeCaseLetters) {
-    const camelCaseKey = snakeCaseKey.replace(snakeCaseLettersRegEx, function() 
-    { 
-      console.log(arguments);
-
-      matchSnakeCaseLetters.forEach(key => console.log(key));
-      return 'bla';
-      // return matchSnakeCaseLetters!.shift()?.toUpperCase();
-    }
-    );
-  }
-
-  
-  // const camelCaseKey = snakeCaseKey.replace(snakeCaseLettersRegEx, () => {
-
-  //   console.log('bla');
-  //   console.log(`This is it ${matchSnakeCaseLetters}`);
-  //   // if (matchSnakeCaseLetters) {
-  //   //   console.log(matchSnakeCaseLetters.shift());
-  //   // }
-
-  // });
+  return camelCaseKey;
 };
 
-const normalizeResolverFields = (data: DBField): ResolverField => {
-  const normalizedResolverFields = Object.entries(data).map((resolverField) => {
-    if (resolverField[0].includes('_')) {
-      const camelCasedResolverField = snakeCaseToCamelCase(resolverField[0]);
-    }
-  });
+const camelCaseToSnakeCase = () => {};
 
-  // Returns an array of arrays with key value pairs. The key first the value second in the array
-  // console.log(normalizedResolverFields);
+/* eslint-disable */
+/*
+ESLint adds additional spaces to ternary
+operators which conflicts with Prettier.
+*/
+export const dbFieldToResolverField = (data: DBField): ResolverField => {
+  const resolverFields = Array.isArray(data)
+    ? data.map((dbField) => {
+        if (typeof dbField !== 'object') return dbField;
+        return dbFieldToResolverField(dbField as DBField);
+      })
+    : Object.entries(data)
+        .map((dbField) => {
+          if (dbField[0].includes('_')) {
+            const resolverField = snakeCaseToCamelCase(dbField[0]);
+            dbField[0] = resolverField ? resolverField : dbField[0];
+          }
+
+          if (
+            Array.isArray(dbField[1]) ||
+            (typeof dbField[1] === 'object' && dbField[1] !== null)
+          ) {
+            dbField[1] = dbFieldToResolverField(dbField[1] as DBField);
+          }
+
+          return dbField;
+        })
+        .reduce(
+          (accumulator, dbField) => ({
+            ...accumulator,
+            [dbField[0]]: dbField[1],
+          }),
+          {},
+        );
+
+  return resolverFields;
+};
+/* eslint-enable */
+
+export const resolverFieldToDBField = (data: ResolverField): DBField => {
+  const dbFields = null;
+
   return {};
 };
 
-// !
+// ! ------------------------DELETE---------------------------------
+const testDBFields = {};
+
 const mf2 = {
   owner_id: '1',
   name: 'Spending Group',
@@ -81,6 +80,8 @@ const mf2 = {
 const mixedFields = {
   owner_id: '1',
   name: 'Spending Group',
+  marshi: { id: 200 },
+  test_longer_key_name: 'Test key',
   spending: [
     'Mixed Spending',
     { spending_group_id: '2', amount: [] },
@@ -92,4 +93,4 @@ const mixedFields = {
   spenders: [[{ spender_name: 'Talel Dayekh' }], []],
 };
 
-console.log(normalizeResolverFields(mf2));
+console.log(dbFieldToResolverField(mixedFields));
