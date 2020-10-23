@@ -21,7 +21,24 @@ const snakeCaseToCamelCase = (snakeCaseKey: string): string | void => {
   return camelCaseKey;
 };
 
-const camelCaseToSnakeCase = () => {};
+const camelCaseToSnakeCase = (camelCaseKey: string): string | void => {
+  const upperCaseLettersRegEx = /[A-Z]/g;
+  const matchCamelCaseLetters = camelCaseKey.match(upperCaseLettersRegEx);
+
+  if (!matchCamelCaseLetters) return;
+
+  const snakeCaseKey = camelCaseKey.replace(
+    upperCaseLettersRegEx,
+    (upperCaseLetter) => {
+      // eslint-disable-next-line
+      return matchCamelCaseLetters!
+        .shift()!
+        .replace(upperCaseLetter, `_${upperCaseLetter.toLowerCase()}`);
+    },
+  );
+
+  return snakeCaseKey;
+};
 
 /* eslint-disable */
 /*
@@ -60,37 +77,41 @@ export const dbFieldToResolverField = (data: DBField): ResolverField => {
 
   return resolverFields;
 };
-/* eslint-enable */
 
 export const resolverFieldToDBField = (data: ResolverField): DBField => {
-  const dbFields = null;
+  const dbFields = Array.isArray(data)
+    ? data.map((resolverField) => {
+        if (typeof resolverField !== 'object') return resolverField;
+        return resolverFieldToDBField(resolverField as ResolverField);
+      })
+    : Object.entries(data)
+        .map((resolverField) => {
+          const upperCaseLettersRegEx = /[A-Z]/g;
 
-  return {};
+          if (resolverField[0].match(upperCaseLettersRegEx)) {
+            const dbField = camelCaseToSnakeCase(resolverField[0]);
+            resolverField[0] = dbField ? dbField : resolverField[0];
+          }
+
+          if (
+            Array.isArray(resolverField[1]) ||
+            (typeof resolverField[1] === 'object' && resolverField[1] !== null)
+          ) {
+            resolverField[1] = resolverFieldToDBField(
+              resolverField[1] as ResolverField,
+            );
+          }
+
+          return resolverField;
+        })
+        .reduce(
+          (accumulator, resolverField) => ({
+            ...accumulator,
+            [resolverField[0]]: resolverField[1],
+          }),
+          {},
+        );
+
+  return dbFields;
 };
-
-// ! ------------------------DELETE---------------------------------
-const testDBFields = {};
-
-const mf2 = {
-  owner_id: '1',
-  name: 'Spending Group',
-  test_longer_key_name: 'Test key',
-};
-
-const mixedFields = {
-  owner_id: '1',
-  name: 'Spending Group',
-  marshi: { id: 200 },
-  test_longer_key_name: 'Test key',
-  spending: [
-    'Mixed Spending',
-    { spending_group_id: '2', amount: [] },
-    {
-      spending_group_id: '2',
-      amount: [{ spending_one: 100, spending_two: 200 }],
-    },
-  ],
-  spenders: [[{ spender_name: 'Talel Dayekh' }], []],
-};
-
-console.log(dbFieldToResolverField(mixedFields));
+/* eslint-enable */
