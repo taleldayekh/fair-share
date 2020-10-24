@@ -45,11 +45,11 @@ const camelCaseToSnakeCase = (camelCaseKey: string): string | void => {
 ESLint adds additional spaces to ternary
 operators which conflicts with Prettier.
 */
-export const dbFieldToResolverField = (data: DBField): ResolverField => {
+export const dbFieldsToResolverFields = (data: DBField): ResolverField => {
   const resolverFields = Array.isArray(data)
     ? data.map((dbField) => {
         if (typeof dbField !== 'object') return dbField;
-        return dbFieldToResolverField(dbField as DBField);
+        return dbFieldsToResolverFields(dbField as DBField);
       })
     : Object.entries(data)
         .map((dbField) => {
@@ -62,7 +62,7 @@ export const dbFieldToResolverField = (data: DBField): ResolverField => {
             Array.isArray(dbField[1]) ||
             (typeof dbField[1] === 'object' && dbField[1] !== null)
           ) {
-            dbField[1] = dbFieldToResolverField(dbField[1] as DBField);
+            dbField[1] = dbFieldsToResolverFields(dbField[1] as DBField);
           }
 
           return dbField;
@@ -78,11 +78,11 @@ export const dbFieldToResolverField = (data: DBField): ResolverField => {
   return resolverFields;
 };
 
-export const resolverFieldToDBField = (data: ResolverField): DBField => {
+export const resolverFieldsToDBFields = (data: ResolverField): DBField => {
   const dbFields = Array.isArray(data)
     ? data.map((resolverField) => {
         if (typeof resolverField !== 'object') return resolverField;
-        return resolverFieldToDBField(resolverField as ResolverField);
+        return resolverFieldsToDBFields(resolverField as ResolverField);
       })
     : Object.entries(data)
         .map((resolverField) => {
@@ -97,7 +97,7 @@ export const resolverFieldToDBField = (data: ResolverField): DBField => {
             Array.isArray(resolverField[1]) ||
             (typeof resolverField[1] === 'object' && resolverField[1] !== null)
           ) {
-            resolverField[1] = resolverFieldToDBField(
+            resolverField[1] = resolverFieldsToDBFields(
               resolverField[1] as ResolverField,
             );
           }
