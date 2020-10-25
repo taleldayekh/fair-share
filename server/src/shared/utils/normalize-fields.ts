@@ -45,6 +45,12 @@ const camelCaseToSnakeCase = (camelCaseKey: string): string | void => {
 ESLint adds additional spaces to ternary
 operators which conflicts with Prettier.
 */
+export const normalizeFields = (data: DBField | ResolverField): DBField | ResolverField => {}
+
+
+
+
+
 export const dbFieldsToResolverFields = (data: DBField): ResolverField => {
   const resolverFields = Array.isArray(data)
     ? data.map((dbField) => {
