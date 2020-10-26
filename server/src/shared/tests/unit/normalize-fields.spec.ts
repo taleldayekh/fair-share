@@ -1,7 +1,4 @@
-import {
-  dbFieldsToResolverFields,
-  resolverFieldsToDBFields,
-} from '../../utils/normalize-fields';
+import { normalizeFields } from '../../utils/normalize-fields';
 
 const mixedDBFields = {
   owner_id: '1',
@@ -19,7 +16,7 @@ const mixedDBFields = {
 
 describe('normalize-fields', () => {
   test('can normalize db fields to resolver fields', () => {
-    const resolverFields = dbFieldsToResolverFields(mixedDBFields);
+    const resolverFields = normalizeFields(mixedDBFields);
 
     expect(resolverFields).toStrictEqual({
       ownerId: '1',
@@ -37,8 +34,8 @@ describe('normalize-fields', () => {
   });
 
   test('can normalize resolver fields to db fields', () => {
-    const resolverFields = dbFieldsToResolverFields(mixedDBFields);
-    const dbFields = resolverFieldsToDBFields(resolverFields);
+    const resolverFields = normalizeFields(mixedDBFields);
+    const dbFields = normalizeFields(resolverFields);
 
     expect(dbFields).toStrictEqual(mixedDBFields);
   });

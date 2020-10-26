@@ -45,79 +45,41 @@ const camelCaseToSnakeCase = (camelCaseKey: string): string | void => {
 ESLint adds additional spaces to ternary
 operators which conflicts with Prettier.
 */
-export const normalizeFields = (data: DBField | ResolverField): DBField | ResolverField => {}
-
-
-
-
-
-export const dbFieldsToResolverFields = (data: DBField): ResolverField => {
-  const resolverFields = Array.isArray(data)
-    ? data.map((dbField) => {
-        if (typeof dbField !== 'object') return dbField;
-        return dbFieldsToResolverFields(dbField as DBField);
+export const normalizeFields = (
+  data: DBField | ResolverField,
+): DBField | ResolverField => {
+  const normalizedFields = Array.isArray(data)
+    ? data.map((field) => {
+        if (typeof field !== 'object') return field;
+        return normalizeFields(field as DBField | ResolverField);
       })
     : Object.entries(data)
-        .map((dbField) => {
-          if (dbField[0].includes('_')) {
-            const resolverField = snakeCaseToCamelCase(dbField[0]);
-            dbField[0] = resolverField ? resolverField : dbField[0];
+        .map((field) => {
+          if (field[0].includes('_')) {
+            const resolverField = snakeCaseToCamelCase(field[0]);
+            field[0] = resolverField ? resolverField : field[0];
+          } else if (field[0].match(/[A-Z]/g)) {
+            const dbField = camelCaseToSnakeCase(field[0]);
+            field[0] = dbField ? dbField : field[0];
           }
 
           if (
-            Array.isArray(dbField[1]) ||
-            (typeof dbField[1] === 'object' && dbField[1] !== null)
+            Array.isArray(field[1]) ||
+            (typeof field[1] === 'object' && field[1] !== null)
           ) {
-            dbField[1] = dbFieldsToResolverFields(dbField[1] as DBField);
+            field[1] = normalizeFields(field[1] as DBField | ResolverField);
           }
 
-          return dbField;
+          return field;
         })
         .reduce(
-          (accumulator, dbField) => ({
+          (accumulator, field) => ({
             ...accumulator,
-            [dbField[0]]: dbField[1],
+            [field[0]]: field[1],
           }),
           {},
         );
 
-  return resolverFields;
-};
-
-export const resolverFieldsToDBFields = (data: ResolverField): DBField => {
-  const dbFields = Array.isArray(data)
-    ? data.map((resolverField) => {
-        if (typeof resolverField !== 'object') return resolverField;
-        return resolverFieldsToDBFields(resolverField as ResolverField);
-      })
-    : Object.entries(data)
-        .map((resolverField) => {
-          const upperCaseLettersRegEx = /[A-Z]/g;
-
-          if (resolverField[0].match(upperCaseLettersRegEx)) {
-            const dbField = camelCaseToSnakeCase(resolverField[0]);
-            resolverField[0] = dbField ? dbField : resolverField[0];
-          }
-
-          if (
-            Array.isArray(resolverField[1]) ||
-            (typeof resolverField[1] === 'object' && resolverField[1] !== null)
-          ) {
-            resolverField[1] = resolverFieldsToDBFields(
-              resolverField[1] as ResolverField,
-            );
-          }
-
-          return resolverField;
-        })
-        .reduce(
-          (accumulator, resolverField) => ({
-            ...accumulator,
-            [resolverField[0]]: resolverField[1],
-          }),
-          {},
-        );
-
-  return dbFields;
+  return normalizedFields;
 };
 /* eslint-enable */
