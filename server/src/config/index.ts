@@ -1,4 +1,4 @@
-import dotEnvParser from '../shared/utils/dotEnvParser';
+import dotEnvParser from '../shared/utils/dotenv-parser';
 
 dotEnvParser();
 
