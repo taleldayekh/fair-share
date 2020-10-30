@@ -19,6 +19,8 @@ const setupTestDB = async () => {
   );
 };
 
+const setupTestDotenvFiles = () => {};
+
 export default async (): Promise<void> => {
   /*
   Creates a test database and seeds it with test data when
