@@ -22,5 +22,12 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
+    'sort-imports': ['error', {
+      'ignoreCase': false,
+      'ignoreDeclarationSort': false,
+      'ignoreMemberSort': false,
+      'memberSyntaxSortOrder': ['all', 'single', 'multiple', 'none'],
+      'allowSeparatedGroups': false
+    }]
   },
 };
