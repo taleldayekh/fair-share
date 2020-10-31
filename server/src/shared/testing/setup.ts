@@ -1,12 +1,12 @@
-import { r } from 'rethinkdb-ts';
 import config from '../../config';
-import { testData } from './test-data';
 import { normalizeFields } from '../utils/normalize-fields';
+import { r } from 'rethinkdb-ts';
+import { testData } from './test-data';
 
 const dbData = normalizeFields(testData);
 const dbTables = Object.keys(dbData);
 
-const setupTestDB = async () => {
+const setupTestDB = async (): Promise<void> => {
   await r.connectPool({
     db: 'testdb',
     port: config.dbPort,
@@ -18,8 +18,6 @@ const setupTestDB = async () => {
     dbTables.map((dbTable) => r.table(dbTable).insert(dbData[dbTable])),
   );
 };
-
-const setupTestDotenvFiles = () => {};
 
 export default async (): Promise<void> => {
   /*
