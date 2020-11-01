@@ -1,5 +1,5 @@
-import { readdirSync, readFileSync } from 'fs';
-import { join, basename } from 'path';
+import { basename, join } from 'path';
+import { readFileSync, readdirSync } from 'fs';
 
 const serverBaseDir = __dirname.split(/(?<=server\/)/)[0];
 const envMode = process.env.NODE_ENV;
