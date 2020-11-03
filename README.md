@@ -8,6 +8,7 @@
       - [Persistence Layer](#persistence-layer)
 - [API](#api)
   - [GraphQL Server Folder Structure](#graphql-server-folder-structure)
+- [Testing](#testing)
 
 ## Architectures
 
@@ -121,3 +122,10 @@ The lessons learned and skills gained are more important than the outcome of thi
          ╰──────────╯            ╰──────────╯    ╰──────────╯        ╰──────────╯
            
    ```
+
+   ## Testing
+
+   <!-- 
+   Add section about testing and what that folder structure includes
+   Including the setup
+    -->
