@@ -14,6 +14,5 @@ afterAll(() => {
 
 describe('dotenv-parser', () => {
   test('', () => {
-    console.log('Smoke test');
   });
 });
