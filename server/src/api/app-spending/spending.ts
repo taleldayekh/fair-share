@@ -1,7 +1,8 @@
-import { IDBSpending, ISpending } from '../../interfaces/types';
+import { DBSpending } from '../../interfaces/models.interface';
+import { Spending } from '../../interfaces/api.interface';
 
 /* istanbul ignore file */
-export const spending = (dbSpending: IDBSpending): ISpending => {
+export const spending = (dbSpending: DBSpending): Spending => {
   const id = dbSpending.id;
   const userId = dbSpending.userId;
   const spendingGroupId = dbSpending.spendingGroupId;

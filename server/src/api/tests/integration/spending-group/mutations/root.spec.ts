@@ -1,21 +1,22 @@
-import { GraphQLRequest } from '../../../utils';
+import axios from 'axios';
+import { graphQLRequestConfig } from '../../../utils';
+
+// TODO: Pass arguments to the GraphQL request instead of using hardcoded values
+// https://graphql.org/graphql-js/passing-arguments/
 
 describe('spending group root mutations', () => {
-  const request = new GraphQLRequest();
-
-  test('create spending group', async () => {
+  test('can create spending group', async () => {
     const createSpendingGroupMutation = /* GraphQL */ `
       mutation {
         createSpendingGroup(userId: "1", name: "Retreat") {
-          ownerId
           name
         }
       }
     `;
-    const res = await request.mutation(createSpendingGroupMutation);
 
-    expect(res).toMatchObject({
-      data: { createSpendingGroup: { ownerId: '1', name: 'Retreat' } },
+    const res = await axios(graphQLRequestConfig(createSpendingGroupMutation));
+    expect(res.data).toMatchObject({
+      data: { createSpendingGroup: { name: 'Retreat' } },
     });
   });
 });

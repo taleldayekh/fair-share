@@ -8,6 +8,7 @@
       - [Persistence Layer](#persistence-layer)
 - [API](#api)
   - [GraphQL Server Folder Structure](#graphql-server-folder-structure)
+- [Testing](#testing)
 
 ## Architectures
 
@@ -57,7 +58,7 @@ Both the GraphQL engine and the web server have been implemented with a minimal 
 
 While such libraries provide a rich ecosystem of pre-built modules which are well tested and widely used, the main reasons for overlooking them in this project are purely academic.
 
-The lessons learned and skills gained are more important than the outcome of this project as a product. Even though it is impossible to understand everything one should push oneself to understand the systems at play. A bare-bones web server, for instance, is fairly easy to write and does not require too many lines of code.
+The lessons learned and skills gained are more important than the outcome of this project as a product. Even though it is impossible to understand everything one should push oneself to understand the systems at play. A bare-bones web server, for instance, should be fairly easy to write and does not require too many lines of code.
 
 ### GraphQL Server Folder Structure
 
@@ -122,29 +123,9 @@ The lessons learned and skills gained are more important than the outcome of thi
            
    ```
 
-<!-- ! CONTINUE FROM HERE ! -->
+   ## Testing
 
-<!-- ### Folder Structure
-
-
-
-4. **tests**  
-   The API test suite is separated into:
-
-   - Integration tests where queries and mutations containing test data are made to a dedicated test database.
-   - Unit tests.
-
-1. **mutations**  
-
-   > The mutation resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
-
-
-1. **queries**  
-
-   > The query resolvers provides a mapping to the models and should be kept thin with the least amount of business logic possible.
-
-1. **type-defs**  
-   All the different types that make up our GraphQL schema. The schema is divided into parts and specified using GraphQL SDL (Schema Definition Language). Each field needs to have a corresponding resolver function with the same name that returns what we want.
-
-1. **schema.ts**  
-   Generates our GraphQL schema by combining all schema parts in the `type-defs` directory.
+   <!-- 
+   Add section about testing and what that folder structure includes
+   Including the setup
+    -->

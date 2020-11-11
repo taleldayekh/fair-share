@@ -3,7 +3,7 @@ name: ci
 on: pull_request
 
 jobs:
-  test_server:
+  server:
     runs-on: ubuntu-latest
     container: rethinkdb
 
@@ -36,6 +36,11 @@ jobs:
           cd server
           npm install
           npm run build
+
+      - name: "Run lint"
+        run: |
+          cd server
+          npm run lint
 
       - name: "Run tests"
         run: |

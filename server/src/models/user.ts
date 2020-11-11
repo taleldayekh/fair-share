@@ -1,28 +1,15 @@
 import { db } from '../db';
-import { IDBUser } from '../interfaces/types';
+import { DBUser } from '../interfaces/models.interface';
 import { RDatum } from 'rethinkdb-ts';
 
-type GetUserByEmail = {
-  email: string;
-};
-
-type GetUserArgs = GetUserByEmail;
-
-const getUserByEmail = async (email: string): Promise<IDBUser | undefined> => {
+const getUserByEmail = async (email: string): Promise<DBUser | undefined> => {
   return (await db.table('users').filter({ email: email }).run())[0];
 };
-
-type NewUserFromEmail = {
-  name: string;
-  email: string;
-};
-
-type CreateUserArgs = NewUserFromEmail;
 
 const createUser = async (
   name: string,
   email: string,
-): Promise<IDBUser | undefined> => {
+): Promise<DBUser | undefined> => {
   return (
     await db
       .table('users')
@@ -44,4 +31,4 @@ const createUser = async (
   )[0];
 };
 
-export { GetUserArgs, getUserByEmail, CreateUserArgs, createUser };
+export { getUserByEmail, createUser };

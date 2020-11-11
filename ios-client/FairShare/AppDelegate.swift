@@ -36,11 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let idToken = user.authentication.idToken
         let fullName = user.profile.name
         let email = user.profile.email
-        
-        print(userId)
-        print(idToken)
-        print(fullName)
-        print(email)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
