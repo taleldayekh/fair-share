@@ -26,7 +26,7 @@
     "@types/rethinkdb": "^2.3.16",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "eslint": "^7.10.0",
     "jest": "^26.4.2",
     "prettier": "2.1.2",
